@@ -19,4 +19,4 @@ const pilotos = [
     { id: 18, nombre: "Daniel Ricciardo", equipo: "AlphaTauri", rol: "Escudero" },
     { id: 19, nombre: "Alexander Albon", equipo: "Williams", rol: "Líder" },
     { id: 20, nombre: "Logan Sargeant", equipo: "Williams", rol: "Escudero" }
-   ]
+]
