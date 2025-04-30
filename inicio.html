@@ -12,10 +12,10 @@
   </head>
   <body>
     <nav id="desktop-nav">
-      <div class="logo"><img src="/img/f1-logo.png" alt="logo"></div>
+      <div class="logo"><img src="img/f1-logo.png" alt="logo"></div>
       <div>
         <ul class="nav-links">
-          <li><a href="#about">Drivers</a></li>
+          <li><a class="drivers-link" href="#about">Drivers</a></li>
           <li><a href="#experience">Vehicles</a></li>
           <li><a href="#projects">Tracks</a></li>
           <li><a href="#contact">Simulation</a></li>
@@ -23,7 +23,7 @@
       </div>
     </nav>
     <nav id="hamburger-nav">
-      <div class="logo"><img src="/img/f1-logo.png" alt="logo"></div>
+      <div class="logo"><img src="img/f1-logo.png" alt="logo"></div>
       <div class="hamburger-menu">
         <div class="hamburger-icon" onclick="toggleMenu()">
           <span></span>
@@ -31,7 +31,7 @@
           <span></span>
         </div>
         <div class="menu-links">
-          <li><a href="#drivers" onclick="toggleMenu()">Drivers</a></li>
+          <li><a class="drivers-link" href="#drivers" onclick="toggleMenu()">Drivers</a></li>
           <li><a href="#vehicles" onclick="toggleMenu()">Vehicles</a></li>
           <li><a href="#tracks" onclick="toggleMenu()">Tracks</a></li>
           <li><a href="#simulation" onclick="toggleMenu()">Simulation</a></li>
@@ -39,7 +39,9 @@
       </div>
     </nav>
 
-    <piloto-card></piloto-card>
+    <section id="drivers-section" style="display: block;">
+      <piloto-card></piloto-card>
+    </section>
 
     <footer>
       <p>&copy; 2025 Simulación de Fórmula 1</p>
