@@ -125,8 +125,29 @@ class PilotoCard extends HTMLElement {
   
       shadow.appendChild(style);
       shadow.appendChild(container);
+
     }
-  }
-  
+}
+
+const driversLink = document.getElementById('drivers-link');
+const driversSection = document.getElementById('drivers-section');
+const navLinks = document.querySelectorAll('nav a');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault(); 
+
+
+    if (link === driversLink) {
+      driversSection.style.display = 'block'; 
+    } else {
+      driversSection.style.display = 'none';
+    }
+  });
+});
+
+
   customElements.define('piloto-card', PilotoCard);
+
+  
   
