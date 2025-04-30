@@ -7,10 +7,7 @@
     <title>Fórmula 1</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/mediaqueries.css" />
-    <script type="module" src="components/pilotos.js"></script>
-    <script type="module" src="components/circuitos.js"></script>
-    <script type="module" src="components/circuitos.js"></script>
-    <script src="main.js"></script>
+    <script type="module" src="main.js" defer></script>
   </head>
   <body>
     <nav id="desktop-nav">
@@ -27,16 +24,16 @@
     <nav id="hamburger-nav">
       <div class="logo"><img src="img/f1-logo.png" alt="logo"></div>
       <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
+        <div class="hamburger-icon">
           <span></span>
           <span></span>
           <span></span>
         </div>
         <div class="menu-links">
-          <li><a class="drivers-link" href="#drivers" onclick="toggleMenu()">Drivers</a></li>
-          <li><a href="#vehicles" onclick="toggleMenu()">Vehicles</a></li>
-          <li><a class="tracks-link" href="#tracks" onclick="toggleMenu()">Tracks</a></li>
-          <li><a href="#simulation" onclick="toggleMenu()">Simulation</a></li>
+          <li><a class="drivers-link" href="#drivers">Drivers</a></li>
+          <li><a href="#vehicles">Vehicles</a></li>
+          <li><a class="tracks-link" href="#tracks">Tracks</a></li>
+          <li><a href="#simulation">Simulation</a></li>
         </div>
       </div>
     </nav>
