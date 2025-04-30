@@ -12,6 +12,13 @@ class PilotoCard extends HTMLElement {
           grid-template-columns: repeat(5, minmax(245px, 1fr));
           gap: 1.5rem;
           padding: 1rem;
+          }
+
+        .banner {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0.5rem auto 1.5rem auto
         }
         
         .card {
@@ -98,6 +105,15 @@ class PilotoCard extends HTMLElement {
   
       const container = document.createElement("div");
       container.classList.add("container");
+
+      const banner = document.createElement("div");
+      const img = document.createElement("img");
+      img.src = "../img/F1-Drivers-white.png";
+      img.alt = "F1 Drivers Banner";
+      img.style.width = "100%";
+      banner.appendChild(img)
+      banner.classList.add("banner");
+      shadow.appendChild(banner);
   
       pilotos.forEach((piloto) => {
         const [nombre, ...resto] = piloto.nombre.split(" ");
