@@ -108,7 +108,7 @@ class PilotoCard extends HTMLElement {
 
       const banner = document.createElement("div");
       const img = document.createElement("img");
-      img.src = "../img/F1-Drivers-white.png";
+      img.src = "../img/F1-drivers-white.png";
       img.alt = "F1 Drivers Banner";
       img.style.width = "100%";
       banner.appendChild(img)
