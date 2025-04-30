@@ -1,4 +1,4 @@
-const pilotos = [
+export const pilotos = [
   { id: 1, nombre: "Max Verstappen", equipo: "Red Bull Racing", rol: "Líder", experiencia: 9, habilidades: ["agresividad", "ritmo de carrera", "clasificación"], url: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png" },
   { id: 2, nombre: "Sergio Pérez", equipo: "Red Bull Racing", rol: "Escudero", experiencia: 13, habilidades: ["defensa", "gestión de neumáticos", "estrategia"], url: "https://soymotor.com/sites/default/files/2024-02/sergio-perez-2024.png" },
   { id: 3, nombre: "Lewis Hamilton", equipo: "Mercedes-AMG Petronas", rol: "Líder", experiencia: 18, habilidades: ["experiencia", "lluvia", "constancia"], url: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png  " },
@@ -9,6 +9,7 @@ const pilotos = [
   { id: 8, nombre: "Oscar Piastri", equipo: "McLaren", rol: "Escudero", experiencia: 2, habilidades: ["aprendizaje rápido", "clasificación", "limpieza"], url: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.png" },
   { id: 9, nombre: "Fernando Alonso", equipo: "Aston Martin", rol: "Líder", experiencia: 21, habilidades: ["experiencia", "lectura de carrera", "adaptabilidad"], url: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/F/FERALO01_Fernando_Alonso/feralo01.png"},
   { id: 10, nombre: "Lance Stroll", equipo: "Aston Martin", rol: "Escudero", experiencia: 7, habilidades: ["largadas", "riesgo", "bloqueo"], url: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LANSTR01_Lance_Stroll/lanstr01.png" },
+  { id: 11,nombre: "Esteban Ocon",equipo: "Alpine",rol: "Líder",experiencia: 6,habilidades: ["Defensiva", "Resistencia", "Consistencia"],url: "https://soymotor.com/sites/default/files/2025-03/eocon_2025.png"},
   { id: 12, nombre: "Pierre Gasly", equipo: "Alpine", rol: "Escudero", experiencia: 7, habilidades: ["velocidad", "resiliencia", "adaptación"], url: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/P/PIEGAS01_Pierre_Gasly/piegas01.png" },
   { id: 13, nombre: "Valtteri Bottas", equipo: "Alfa Romeo", rol: "Líder", experiencia: 12, habilidades: ["clasificación", "limpieza", "experiencia"], url: "https://soyf1.com/wp-content/uploads/valtteri-bottas-77.png" },
   { id: 14, nombre: "Zhou Guanyu", equipo: "Alfa Romeo", rol: "Escudero", experiencia: 3, habilidades: ["control", "aprendizaje", "disciplinado"], url: "https://soymotor.com/sites/default/files/2024-02/guanyu-zhou-2024.png" },
