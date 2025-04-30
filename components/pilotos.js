@@ -12,6 +12,13 @@ class PilotoCard extends HTMLElement {
           grid-template-columns: repeat(5, minmax(245px, 1fr));
           gap: 1.5rem;
           padding: 1rem;
+          }
+
+        .banner {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0.5rem auto 1.5rem auto
         }
         
         .card {
@@ -98,6 +105,15 @@ class PilotoCard extends HTMLElement {
   
       const container = document.createElement("div");
       container.classList.add("container");
+
+      const banner = document.createElement("div");
+      const img = document.createElement("img");
+      img.src = "../img/F1-drivers-white.png";
+      img.alt = "F1 Drivers Banner";
+      img.style.width = "100%";
+      banner.appendChild(img)
+      banner.classList.add("banner");
+      shadow.appendChild(banner);
   
       pilotos.forEach((piloto) => {
         const [nombre, ...resto] = piloto.nombre.split(" ");
@@ -129,25 +145,29 @@ class PilotoCard extends HTMLElement {
     }
 }
 
-const driversLink = document.getElementById('drivers-link');
+const driversLinks = document.querySelectorAll('.drivers-link');
 const driversSection = document.getElementById('drivers-section');
 const navLinks = document.querySelectorAll('nav a');
 
 navLinks.forEach(link => {
   link.addEventListener('click', (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
-
-    if (link === driversLink) {
-      driversSection.style.display = 'block'; 
+    // Si el enlace actual es alguno de los que abren drivers
+    if ([...driversLinks].includes(link)) {
+      driversSection.style.display = 'block';
     } else {
       driversSection.style.display = 'none';
+    }
+
+    // Cierra el menú en móvil
+    if (window.innerWidth <= 768) {
+      toggleMenu();
     }
   });
 });
 
-
-  customElements.define('piloto-card', PilotoCard);
+customElements.define('piloto-card', PilotoCard);
 
   
   

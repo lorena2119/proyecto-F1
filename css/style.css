@@ -13,7 +13,6 @@ body{
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 95vh;
   background-color: #000000;
   background: url('../img/fondo2.jpg') no-repeat;
   background-size: cover;
@@ -580,6 +579,7 @@ footer {
   bottom: 0;
   background-color: rgb(225, 6, 0);
   z-index:10000;
+  margin-top: 2rem;
 }
 
 footer p {
