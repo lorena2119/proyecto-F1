@@ -11,7 +11,7 @@ const circuitos = [
     { temporada: 2022, piloto: 2 },
     { temporada: 2023, piloto: 1 }
     ],
-    imagen: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Monte_Carlo_Formula_1_track_map.svg"
+    imagen: "https://img.redbull.com/images/q_auto,f_auto/redbullcom/2023/4/6/qf1iayummv79s4tdzkyy/plano-circuito-monaco-formula-1"
 },
 {
     nombre: "Silverstone",
@@ -25,7 +25,7 @@ const circuitos = [
     { temporada: 2022, piloto: 5 },
     { temporada: 2023, piloto: 1 }
     ],
-    imagen: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Silverstone_Circuit_2020_layout.png"
+    imagen: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Circuit_Silverstone_2011.svg"
 },
 {
     nombre: "Circuito de Spa-Francorchamps",
@@ -39,7 +39,7 @@ const circuitos = [
     { temporada: 2022, piloto: 1 },
     { temporada: 2023, piloto: 1 }
     ],
-    imagen: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Circuit_Spa_2018.png"
+    imagen: "https://www.motoryracing.com/images/circuitos/0000/24.png"
 },
 {
     nombre: "Circuito de Monza",
@@ -53,7 +53,7 @@ const circuitos = [
     { temporada: 2022, piloto: 1 },
     { temporada: 2023, piloto: 1 }
     ],
-    imagen: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Monza_track_map.svg"
+    imagen: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Monza_1976-1993.png"
 },
 {
     nombre: "Interlagos",
@@ -67,7 +67,7 @@ const circuitos = [
     { temporada: 2022, piloto: 1 },
     { temporada: 2023, piloto: 1 }
     ],
-    imagen: "https://upload.wikimedia.org/wikipedia/commons/2/23/Aut%C3%B3dromo_Jos%C3%A9_Carlos_Pace_%28Interlagos%29.svg"
+    imagen: "https://www.racingatmosphere.net/wp-content/uploads/2018/08/Circuit_Interlagos.svg_.png"
 },
 {
     nombre: "Circuito de Yas Marina",
@@ -81,7 +81,7 @@ const circuitos = [
     { temporada: 2022, piloto: 1 },
     { temporada: 2023, piloto: 3 }
     ],
-    imagen: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Yas_Marina_Circuit_2021_layout.svg"
+    imagen: "https://static.wikia.nocookie.net/f1wikia/images/d/dc/Circuit_Yas-Island.svg/revision/latest?cb=20120806124014"
 },
 
 {
@@ -97,7 +97,7 @@ const circuitos = [
     { temporada: 2023, piloto: 1 }
     ],
 
-    imagen: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Suzuka_circuit_map--2005.svg"
+    imagen: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Suzuka_circuit_map--2005.svg"
 }
 
 ];

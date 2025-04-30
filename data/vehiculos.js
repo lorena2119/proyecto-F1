@@ -23,7 +23,7 @@ const vehiculos = [
                 desgaste_neumaticos: { seco: 0.9, lluvioso: 0.4, extremo: 1.7 }
             }
         },
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/8/89/Max_Verstappen_2023_Austria_FP2_%28cropped%29.jpg"
+        imagen: "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2025/red-bull-racing.png"
     },
     {
         equipo: "Mercedes-AMG Petronas",
@@ -49,7 +49,7 @@ const vehiculos = [
                 desgaste_neumaticos: { seco: 1.0, lluvioso: 0.5, extremo: 1.8 }
             }
         },
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/8/87/Lewis_Hamilton_2022_Imola.jpg"
+        imagen: "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2025/mercedes.png"
     },
     {
         equipo: "Ferrari",
@@ -75,7 +75,7 @@ const vehiculos = [
                 desgaste_neumaticos: { seco: 1.05, lluvioso: 0.55, extremo: 1.85 }
             }
         },
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Charles_Leclerc_2022_Bahrain_FP2.jpg/800px-Charles_Leclerc_2022_Bahrain_FP2.jpg"
+        imagen: "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2025/ferrari.png"
     },
     {
         equipo: "McLaren",
@@ -101,7 +101,7 @@ const vehiculos = [
                 desgaste_neumaticos: { seco: 1.1, lluvioso: 0.6, extremo: 1.9 }
             }
         },
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Lando_Norris_2023_British_Grand_Prix_1.jpg/800px-Lando_Norris_2023_British_Grand_Prix_1.jpg"
+        imagen: "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2025/mclaren.png"
     },
     {
         equipo: "Aston Martin",
@@ -127,7 +127,7 @@ const vehiculos = [
                 desgaste_neumaticos: { seco: 1.15, lluvioso: 0.65, extremo: 1.95 }
             }
         },
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Fernando_Alonso_2023_Saudi_Arabia_FP2.jpg/800px-Fernando_Alonso_2023_Saudi_Arabia_FP2.jpg"
+        imagen: "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2025/aston-martin.png"
     },
     {
         equipo: "Alpine",
@@ -153,7 +153,7 @@ const vehiculos = [
                 desgaste_neumaticos: { seco: 1.2, lluvioso: 0.7, extremo: 2.0 }
             }
         },
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Esteban_Ocon_2022_Japan.jpg/800px-Esteban_Ocon_2022_Japan.jpg"
+        imagen: "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2025/alpine.png"
     },
     {
         equipo: "Alfa Romeo",
@@ -179,7 +179,7 @@ const vehiculos = [
                 desgaste_neumaticos: { seco: 1.25, lluvioso: 0.75, extremo: 2.05 }
             }
         },
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Valtteri_Bottas_2023_Bahrain_FP2.jpg/800px-Valtteri_Bottas_2023_Bahrain_FP2.jpg"
+        imagen: "https://soymotor.com/sites/default/files/styles/team_desk/public/2023-02/alfa-romeo-c43-f1-2023-soymotor_5.png.webp?itok=i_vjuylh"
     },
     {
         equipo: "Haas",
@@ -205,7 +205,7 @@ const vehiculos = [
                 desgaste_neumaticos: { seco: 1.3, lluvioso: 0.8, extremo: 2.1 }
             }
         },
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Kevin_Magnussen_2023_Saudi_Arabia_FP2.jpg/800px-Kevin_Magnussen_2023_Saudi_Arabia_FP2.jpg"
+        imagen: "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2025/haas.png"
     },
     {
         equipo: "AlphaTauri",
@@ -231,7 +231,7 @@ const vehiculos = [
                 desgaste_neumaticos: { seco: 1.18, lluvioso: 0.68, extremo: 1.98 }
             }
         },
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Yuki_Tsunoda_2023_Saudi_Arabia_FP2.jpg/800px-Yuki_Tsunoda_2023_Saudi_Arabia_FP2.jpg"
+        imagen: "https://graphics.thomsonreuters.com/data/f1/images/cars2021/38kfl4num7fguk2s16bgw1f1m.png"
     },
     {
         equipo: "Williams",
@@ -257,6 +257,6 @@ const vehiculos = [
                 desgaste_neumaticos: { seco: 1.22, lluvioso: 0.72, extremo: 2.02 }
             }
         },
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Alexander_Albon_2023_Saudi_Arabia_FP2.jpg/800px-Alexander_Albon_2023_Saudi_Arabia_FP2.jpg"
+        imagen: "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2025/williams.png"
     }
 ];
