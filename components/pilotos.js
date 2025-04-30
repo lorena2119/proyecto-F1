@@ -4,7 +4,7 @@ class PilotoCard extends HTMLElement {
     constructor() {
       super();
       const shadow = this.attachShadow({ mode: "open" });
-  
+      
       const style = document.createElement("style");
       style.textContent = `
         .container {
@@ -23,10 +23,10 @@ class PilotoCard extends HTMLElement {
         
         .card {
           background: #fff;
-          border: 1px solid #ddd;
+          border: 3px solid #ddd;
           border-radius: 12px;
           overflow: hidden;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-family: sans-serif;
           position: relative;
           min-height: 360px;
           display: flex;
@@ -38,6 +38,8 @@ class PilotoCard extends HTMLElement {
         .card:hover {
           transform: translateY(-5px);
           box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+          border-right-color: red;
+          border-bottom-color: red;
         }
   
         .info {
@@ -54,14 +56,16 @@ class PilotoCard extends HTMLElement {
         }
   
         .nombre .nombre-pequeno {
+          font-family: 'Bruno Ace SC';
           font-size: 0.7em;
           text-transform: uppercase;
           color: #00b0f0;
           font-weight: 600;
           letter-spacing: 0.05em;
         }
-  
+        
         .nombre .apellido {
+          font-family: 'Bruno Ace SC';
           font-size: 1.2em;
           font-weight: bold;
           color: #111;
@@ -84,6 +88,7 @@ class PilotoCard extends HTMLElement {
           flex-wrap: wrap;
           gap: 0.3rem;
           margin-top: 0.5rem;
+          font-family: 'Bruno Ace SC';
         }
   
         .chip {

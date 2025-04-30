@@ -1,0 +1,18 @@
+:root{
+    --color-1:rgb(225, 6, 0);
+}
+
+@font-face {
+    font-family: "Bruno Ace SC";
+    src: url(../fonts/Bruno_Ace_SC/BrunoAceSC-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Bruno Neue";
+    src: url(../fonts/Bebas_Neue/BebasNeue-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url(../fonts/Inter/static/Inter_18pt-Regular.ttf);
+}
