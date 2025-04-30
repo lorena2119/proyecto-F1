@@ -118,4 +118,26 @@ class CircuitoCard extends HTMLElement {
   
 }
 
+const tracksLinks = document.querySelectorAll('.tracks-link');
+const tracksSection = document.getElementById('tracks-section');
+const navLinks = document.querySelectorAll('nav a');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+
+
+    if ([...tracksLinks].includes(link)) {
+      tracksSection.style.display = 'block';
+    } else {
+      tracksSection.style.display = 'none';
+    }
+
+
+    if (window.innerWidth <= 768) {
+      toggleMenu();
+    }
+  });
+});
+
 customElements.define('circuito-card', CircuitoCard);

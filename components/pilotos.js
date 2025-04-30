@@ -158,14 +158,14 @@ navLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
-    // Si el enlace actual es alguno de los que abren drivers
+
     if ([...driversLinks].includes(link)) {
       driversSection.style.display = 'block';
     } else {
       driversSection.style.display = 'none';
     }
 
-    // Cierra el menú en móvil
+
     if (window.innerWidth <= 768) {
       toggleMenu();
     }
