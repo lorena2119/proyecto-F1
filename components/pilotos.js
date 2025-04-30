@@ -129,25 +129,30 @@ class PilotoCard extends HTMLElement {
     }
 }
 
-const driversLink = document.getElementById('drivers-link');
+const driversLinks = document.querySelectorAll('.drivers-link');
 const driversSection = document.getElementById('drivers-section');
 const navLinks = document.querySelectorAll('nav a');
 
 navLinks.forEach(link => {
   link.addEventListener('click', (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
-
-    if (link === driversLink) {
-      driversSection.style.display = 'block'; 
+    // Si el enlace actual es alguno de los que abren drivers
+    if ([...driversLinks].includes(link)) {
+      driversSection.style.display = 'block';
     } else {
       driversSection.style.display = 'none';
     }
+
+    // Cierra el menú en móvil
+    if (window.innerWidth <= 768) {
+      toggleMenu();
+    }
   });
 });
-
-
-  customElements.define('piloto-card', PilotoCard);
+ 
+ 
+   customElements.define('piloto-card', PilotoCard);
 
   
   
