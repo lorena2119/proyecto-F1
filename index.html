@@ -8,12 +8,12 @@
     <title>Fórmula 1</title>
 </head>
 <body>
-    <nav id="desktop-nav">
-        <div class="logo"><img src="./img/f1-logo.png" alt="logo"></div>
+    <nav id="index-nav">
+        <div class="logo"><img src="img/f1-logo.png" alt="logo"></div>
     </nav> 
     <section>
         <div class="login-box">
-            <form action="">
+            <form action="" id="form">
                 <h2>Login</h2>
                 <div class="input-box">
                     <span class="icon">
@@ -29,31 +29,32 @@
                     <input id="password" type="password" required>
                     <label>Password</label>
                 </div>
-                <button type="submit" id="login">Login</button>
+                <p id="error"></p>
+                <button type="submit">Login</button>
             </form>
         </div>
     </section>
     <script>
-        let userUser = "user123"
-        let userAdmin = "admin123"
-        let passwordUser = "user123"
-        let passwordAdmin = "admin123"
+        // Función para redireccionar según el usuario: user o admin
+        document.getElementById('form').addEventListener('submit', function(event) {
+        event.preventDefault(); 
 
-        let button = document.getElementById('login')
-        function login(){
-            let user = document.getElementById('user').value
-            let password = document.getElementById('password').value
-            console.log(user)
-            if(user == userUser && password == passwordUser){
-                window.location.assign('inicio.html')
-            }else if(user == userAdmin && password == passwordAdmin){
-                window.location.assign('inicioAdmin.html')
-            }else{
-                alert('No existe')
-                return
-            }
+        let userUser = "user123";
+        let userAdmin = "admin123";
+        let passwordUser = "user123";
+        let passwordAdmin = "admin123";
+
+        let user = document.getElementById('user').value;
+        let password = document.getElementById('password').value;
+
+        if(user === userUser && password === passwordUser){
+            window.location.href = 'inicio.html';
+        } else if(user === userAdmin && password === passwordAdmin){
+            window.location.href = 'inicioAdmin.html';
+        } else {
+            document.getElementById('error').textContent = 'Contraseña o usuario incorrecto';
         }
-        button.addEventListener('click', login())
+    });
     </script>
 
     <footer>
