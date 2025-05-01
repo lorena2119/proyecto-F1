@@ -1,4 +1,4 @@
-const vehiculos = [
+export const vehiculos = [
     {
         equipo: "Red Bull Racing",
         modelo: "RB21",
