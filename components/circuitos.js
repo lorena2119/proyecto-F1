@@ -79,6 +79,13 @@ class CircuitoCard extends HTMLElement {
           padding-left: 1rem;
           margin: 0;
         }
+
+        @media screen and (max-width: 1300px) {
+          .grid {
+              grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+              gap: 4rem;
+              padding: 3.5rem;
+        }
       </style>
     `;
   

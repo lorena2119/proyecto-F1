@@ -106,6 +106,11 @@ class PilotoCard extends HTMLElement {
           object-fit: contain;
           margin-top: auto;
         }
+        
+        @media screen and (max-width: 1450px) {
+          .container {
+            grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));}
+        }
       `;
   
       const container = document.createElement("div");
