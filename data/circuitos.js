@@ -30,7 +30,7 @@ export const circuitos = [
       imagen: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Circuit_Silverstone_2011.svg"
     },
     {
-      nombre: "Circuito de Spa-Francorchamps",
+      nombre: "C. de Spa-Francorchamps",
       pais: "Bélgica",
       longitud_km: 7.00,
       vueltas: 44,
@@ -75,8 +75,8 @@ export const circuitos = [
       imagen: "https://www.racingatmosphere.net/wp-content/uploads/2018/08/Circuit_Interlagos.svg_.png"
     },
     {
-      nombre: "Circuito de Yas Marina",
-      pais: "Emiratos Árabes Unidos",
+      nombre: "C. de Yas Marina",
+      pais: "EAU",
       longitud_km: 5.28,
       vueltas: 58,
       descripcion: "Ubicado en Abu Dhabi, es famoso por ser el circuito donde se definen muchos campeonatos, con un diseño moderno y una espectacular carrera nocturna.",

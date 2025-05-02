@@ -3,7 +3,7 @@ import './components/pilotos.js'
 import './components/simulacion.js'
 import './components/vehiculos.js';
 import { vehiculos as vehiculosData } from "./data/vehiculos.js";
-
+import {circuitos as circuitosData} from "./data/circuitos.js"
 // Función para redireccionar según el usuario: user o admin
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById('form');
@@ -62,3 +62,27 @@ vehiculos.forEach((vehiculo, index) => {
   if (vehiculosGuardados) {
     vehiculos = JSON.parse(vehiculosGuardados); 
   }})
+
+
+
+  let circuitos = JSON.parse(localStorage.getItem("pistas_guardadas")) || [...circuitosData];
+  const containerPistas = document.getElementById("circuitos-container"); 
+  
+  function renderCards() {
+    containerPistas.innerHTML =""; 
+    circuitos.forEach((pista, index) => {
+      const card = document.createElement("circuito-card");
+      card.data = pista;
+      card.dataset.id = index;
+      containerPistas.appendChild(card);
+  
+      card.addEventListener("pista-eliminada", (e) => {
+        const id = Number(e.detail);
+        circuitos.splice(id, 1);
+        localStorage.setItem("pistas_guardadas", JSON.stringify(circuitos));
+        renderCards(); 
+      });
+    });
+  }
+  
+  renderCards();
