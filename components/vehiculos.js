@@ -20,6 +20,7 @@ class VehiculoCard extends HTMLElement {
             align-items: center;
             gap: 0.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position:relative;
           }
           
           .card:hover {
@@ -76,6 +77,48 @@ class VehiculoCard extends HTMLElement {
             border-top: 1px solid #ddd;
             margin: 8px 0;
           }
+
+          .button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 25px;
+            height: 25px;
+            background: #d32f2f;
+            border: 2px solid #b71c1c;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            }
+
+        .X, .Y {
+            position: absolute;
+            width: 16px;
+            height: 2px;
+            background: white;
+            }
+
+        .X {
+            transform: rotate(45deg);
+            }
+
+        .Y {
+            transform: rotate(-45deg);
+            }
+
+        .button:hover {
+            background: #b71c1c;
+            transform: scale(1.1);
+            }
+
+        .button:active {
+            transform: scale(0.9);
+            background: #880e4f;
+            }
+            
         </style>
       `;
 
@@ -101,12 +144,26 @@ class VehiculoCard extends HTMLElement {
           ${renderRendimiento("Conducción normal", data.rendimiento.conduccion_normal)}
           ${renderRendimiento("Conducción agresiva", data.rendimiento.conduccion_agresiva)}
           ${renderRendimiento("Ahorro de combustible", data.rendimiento.ahorro_combustible)}
+
+          <button class="button">
+            <span class="X"></span>
+            <span class="Y"></span>
+          </button>
         </div>
       `;
   
       this.shadowRoot.innerHTML = `${style}${html}`;
+      const close_button = this.shadowRoot.querySelector(".button");
+        close_button.addEventListener("click", () => {
+          this.dispatchEvent(new CustomEvent("vehiculo-eliminado", {
+            detail: this.dataset.id, 
+            bubbles: true,
+            composed: true,
+          }));
+        });
+      }
     }
-  }
+  
 
   const vehiclesLinks = document.querySelectorAll('.vehicle-link');
   const vehiclesSection = document.getElementById('vehicles-section');
