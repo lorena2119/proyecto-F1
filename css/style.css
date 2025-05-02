@@ -16,6 +16,10 @@ body{
   background-color: #000000;
   background-position: center;
 }
+#login-section {
+  height: 67.5vh;
+}
+
 section {
   display: flex;
   justify-content: center;
@@ -111,11 +115,13 @@ button{
     margin: 0px 15px;
   }
 }
-
-
-
-
-
+#overlay.active{
+  pointer-events: all;
+  opacity: 1;
+}
+.modal.active{
+  transform: translate(-50%, 50%) scale(1);
+}
 html {
   scroll-behavior: smooth;
 }
