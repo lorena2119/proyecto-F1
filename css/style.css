@@ -16,6 +16,10 @@ body{
   background-color: #000000;
   background-position: center;
 }
+#login-section {
+  height: 67.5vh;
+}
+
 section {
   display: flex;
   justify-content: center;
@@ -24,6 +28,7 @@ section {
   width: 100%;
   height: 100%;
 }
+
 .login-box{
   position: relative;
   width: 400px;
@@ -95,23 +100,6 @@ button{
   margin-bottom: 2%;
   color: #ff0000;
 }
-
-@media(max-width: 360px){
-  .login-box{
-    width: 100%;
-    height: 100vh;
-    border: none;
-    border-radius: none;
-  }
-  #desktop-nav {
-    display: none;
-  }
-  .input-box{
-    width: 290px;
-    margin: 0px 15px;
-  }
-}
-
 
 
 

@@ -90,6 +90,18 @@ class CircuitoCard extends HTMLElement {
         .card:nth-child(7) {
             grid-column: auto; 
         }
+
+        @media screen and (max-width: 415px) {
+          .grid {
+              grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+              gap: 4rem;
+              padding: 1 rem 3.5rem;
+              margin: 0 28px 0 0;
+        }
+        
+        .card:nth-child(7) {
+            grid-column: auto; 
+        }
       </style>
     `;
   
