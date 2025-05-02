@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="module" src="main.js" defer></script>
     <title>Fórmula 1</title>
 </head>
 <body>
     <nav id="index-nav">
         <div class="logo"><img src="img/f1-logo.png" alt="logo"></div>
     </nav> 
-    <section>
+    <section id="login-section">
         <div class="login-box">
             <form action="" id="form">
                 <h2>Login</h2>
@@ -37,27 +38,5 @@
     <footer>
         <p>&copy; 2025 Simulación de Fórmula 1</p>
     </footer>
-    <script>
-        // Función para redireccionar según el usuario: user o admin
-        document.getElementById('form').addEventListener('submit', function(event) {
-        event.preventDefault(); 
-
-        let userUser = "user123";
-        let userAdmin = "admin123";
-        let passwordUser = "user123";
-        let passwordAdmin = "admin123";
-
-        let user = document.getElementById('user').value;
-        let password = document.getElementById('password').value;
-
-        if(user === userUser && password === passwordUser){
-            window.location.href = 'inicio.html';
-        } else if(user === userAdmin && password === passwordAdmin){
-            window.location.href = 'inicioAdmin.html';
-        } else {
-            document.getElementById('error').textContent = 'Contraseña o usuario incorrecto';
-        }
-    });
-    </script>
 </body>
 </html>

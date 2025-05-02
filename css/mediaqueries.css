@@ -95,6 +95,7 @@
     }
     .logo {
       font-size: 1.5rem;
+      margin: 0 auto;
     }
     .nav-links {
       flex-direction: column;
@@ -125,3 +126,18 @@
     }
   }
   
+  @media(max-width: 360px){
+    .login-box{
+      width: 100%;
+      height: 100vh;
+      border: none;
+      border-radius: none;
+    }
+    #desktop-nav {
+      display: none;
+    }
+    .input-box{
+      width: 290px;
+      margin: 0px 15px;
+    }
+  }

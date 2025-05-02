@@ -1,4 +1,4 @@
-export const vehiculos = [
+export let vehiculos = [
     {
         equipo: "Red Bull Racing",
         modelo: "RB21",
