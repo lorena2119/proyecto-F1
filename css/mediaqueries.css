@@ -53,6 +53,14 @@
       height: 100%;
     }
   }
+
+  @media screen and (max-width: 800px){
+    .titulo {
+      font-size: 3rem;
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+  }
   
   @media screen and (max-width: 600px) {
     #contact,

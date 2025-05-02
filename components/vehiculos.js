@@ -64,7 +64,7 @@ class VehiculoCard extends HTMLElement {
           }
         </style>
       `;
-  
+
       const renderRendimiento = (modo, datos) => `
         <div class="modo">${modo}</div>
         <div class="stats">
@@ -95,7 +95,7 @@ class VehiculoCard extends HTMLElement {
   }
 
   const vehiclesLinks = document.querySelectorAll('.vehicle-link');
-  const vehiclesSection = document.getElementById('vehiculos-container');
+  const vehiclesSection = document.getElementById('vehicles-section');
   const navLinks = document.querySelectorAll('nav a');
 
     navLinks.forEach(link => {
@@ -104,7 +104,7 @@ class VehiculoCard extends HTMLElement {
 
 
     if ([...vehiclesLinks].includes(link)) {
-        vehiclesSection.style.display = 'grid';
+        vehiclesSection.style.display = 'block';
     } else {
         vehiclesSection.style.display = 'none';
     }

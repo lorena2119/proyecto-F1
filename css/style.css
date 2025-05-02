@@ -599,3 +599,12 @@ footer p {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.titulo{
+  font-family: "Formula 1 Bold";
+  font-size: 7rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: black 0px 0px 10px;
+}

@@ -16,3 +16,18 @@
     font-family: "Inter";
     src: url(../fonts/Inter/static/Inter_18pt-Regular.ttf);
 }
+
+@font-face {
+    font-family: "Formula 1 bold";
+    src: url(../fonts/Formula_1/Formula1-Bold_web_0.ttf);
+}
+
+@font-face {
+    font-family: "Formula 1 Regular";
+    src: url(../fonts/Formula_1/Formula1-Regular_web_0.ttf)
+}
+
+@font-face {
+    font-family: "Formula 1 Wide";
+    src: url(../fonts/Formula_1/Formula1-Wide_web_0.ttf)
+}

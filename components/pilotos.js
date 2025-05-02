@@ -9,18 +9,12 @@ class PilotoCard extends HTMLElement {
       style.textContent = `
         .container {
           display: grid;
-          grid-template-columns: repeat(5, minmax(245px, 1fr));
+          grid-template-columns: repeat(4, minmax(245px, 340px));
           gap: 1.5rem;
           padding: 1rem;
+          justify-content: center;
           }
 
-        .banner {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: 0.5rem auto 1.5rem auto
-        }
-        
         .card {
           background: #fff;
           border: 3px solid #ddd;
@@ -107,24 +101,17 @@ class PilotoCard extends HTMLElement {
           margin-top: auto;
         }
         
-        @media screen and (max-width: 1450px) {
+        @media screen and (max-width: 1500px) {
           .container {
-            grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));}
+            grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+            margin: 1rem 35px;
+            }
         }
       `;
   
       const container = document.createElement("div");
       container.classList.add("container");
 
-      const banner = document.createElement("div");
-      const img = document.createElement("img");
-      img.src = "../img/F1-drivers-white.png";
-      img.alt = "F1 Drivers Banner";
-      img.style.width = "100%";
-      banner.appendChild(img)
-      banner.classList.add("banner");
-      shadow.appendChild(banner);
-  
       pilotos.forEach((piloto) => {
         const [nombre, ...resto] = piloto.nombre.split(" ");
         const apellido = resto.join(" ");

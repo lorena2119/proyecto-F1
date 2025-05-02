@@ -11,10 +11,10 @@ class CircuitoCard extends HTMLElement {
       <style>
         .grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(280px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(3, minmax(280px, 360px));
+        gap: 5rem;
         padding: 2rem;
-        justify-items: center;
+        justify-content: center;
         }
 
 
@@ -30,7 +30,6 @@ class CircuitoCard extends HTMLElement {
           background-color: #fff;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           width: 100%;
-          max-width: 360px;
           display: grid;
           grid-template-rows: auto auto auto;
           gap: 1rem;
@@ -84,7 +83,12 @@ class CircuitoCard extends HTMLElement {
           .grid {
               grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
               gap: 4rem;
-              padding: 3.5rem;
+              padding: 1 rem 3.5rem;
+              margin: 0 25px;
+        }
+        
+        .card:nth-child(7) {
+            grid-column: auto; 
         }
       </style>
     `;
