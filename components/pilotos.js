@@ -31,7 +31,7 @@ class PilotoCard extends HTMLElement {
   
         .card:hover {
           transform: translateY(-5px);
-          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.33);
           border-right-color: red;
           border-bottom-color: red;
         }
@@ -53,28 +53,35 @@ class PilotoCard extends HTMLElement {
           font-family: 'Bruno Ace SC';
           font-size: 0.7em;
           text-transform: uppercase;
-          color: #00b0f0;
+          color: var(--color-2);
           font-weight: 600;
           letter-spacing: 0.05em;
         }
         
         .nombre .apellido {
           font-family: 'Bruno Ace SC';
-          font-size: 1.2em;
+          font-size: 1.5em;
           font-weight: bold;
           color: #111;
         }
   
         .equipo {
-          font-size: 0.85em;
+          font-size: 0.95em;
           color: #888;
           margin-top: 0.3rem;
+          font-family: "Formula 1 Regular";
+        }
+
+        .equipo:hover {
+          color: var(--color-1);
         }
   
         .extra {
           font-size: 0.8em;
           margin-top: 0.4rem;
           color: #333;
+          font-family: "Formula 1 Regular";
+          font-size: 0.75em;
         }
   
         .habilidades {
@@ -86,7 +93,7 @@ class PilotoCard extends HTMLElement {
         }
   
         .chip {
-          background-color: #00b0f0;
+          background-color: var(--color-2);
           color: white;
           padding: 0.25rem 0.5rem;
           border-radius: 999px;

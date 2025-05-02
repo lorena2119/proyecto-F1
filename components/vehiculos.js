@@ -10,7 +10,7 @@ class VehiculoCard extends HTMLElement {
           .card {
             font-family: 'Segoe UI', sans-serif;
             background: #ffffff;
-            border: 2px solid #dedede;
+            border: 3px solid #dedede;
             border-radius: 16px;
             padding: 1rem;
             max-width: 360px;
@@ -19,13 +19,20 @@ class VehiculoCard extends HTMLElement {
             flex-direction: column;
             align-items: center;
             gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
           }
-            
+          
+          .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.33);
+          border-right-color: red;
+          border-bottom-color: red;
+        }
   
           .card h2 {
             margin: 0;
             font-size: 1.3rem;
-            color: #ff6600;
+            color: var(--color-2);
           }
   
           .card img {
@@ -48,12 +55,19 @@ class VehiculoCard extends HTMLElement {
   
           .stats p {
             margin: 4px 0;
+            font-family: "Formula 1 Regular";
+            font-size: 0.8rem;
           }
   
           .modo {
             margin-top: 0.5rem;
             font-weight: bold;
             color: #555;
+            font-family: "Bruno Ace SC";
+          }
+
+          .modo:hover {
+            color: var(--color-2);
           }
   
           hr {
