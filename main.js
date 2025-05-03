@@ -73,25 +73,5 @@ vehiculos.forEach((vehiculo, index) => {
 
 
 
-  let circuitos = JSON.parse(localStorage.getItem("pistas_guardadas")) || [...circuitosData];
-  const containerPistas = document.getElementById("circuitos-container"); 
   
-  function renderCards() {
-    containerPistas.innerHTML =""; 
-    circuitos.forEach((pista, index) => {
-      const card = document.createElement("circuito-card");
-      card.data = pista;
-      card.dataset.id = index;
-      containerPistas.appendChild(card);
-  
-      card.addEventListener("pista-eliminada", (e) => {
-        const id = Number(e.detail);
-        circuitos.splice(id, 1);
-        localStorage.setItem("pistas_guardadas", JSON.stringify(circuitos));
-        renderCards(); 
-      });
-    });
-  }
-  
-  renderCards();
   
