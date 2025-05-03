@@ -186,11 +186,11 @@ background: linear-gradient(90deg, rgba(128, 1, 1, 1) 0%, rgba(204, 0, 0, 1) 50%
   width: 100%;
   justify-content: center;
   align-items: center;
-  height: 17vh;
+  height: 10vh;
   position: sticky;
   top: 0;
   background: #000000;
-background: linear-gradient(180deg, rgba(0, 0, 0, 1) 9%, rgba(42, 42, 42, 0.79) 58%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 1) 9%, rgba(42, 42, 42, 0.79) 58%, rgba(255, 255, 255, 0) 100%);
   z-index:10000;
 }
 
@@ -199,8 +199,8 @@ background: linear-gradient(180deg, rgba(0, 0, 0, 1) 9%, rgba(42, 42, 42, 0.79) 
   list-style: none;
   font-size: 1.2rem;
   margin: 0 4rem;
-  height: 12vh;
-  line-height: 12vh;
+  height: 10vh;
+  line-height: 10vh;
   font-family: "Bruno Ace SC";
   font-weight: 400;
   font-style: normal;

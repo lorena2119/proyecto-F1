@@ -286,7 +286,7 @@ class PilotoCardAdmin extends HTMLElement {
       .input-box{
         position: relative;
         width: 310px;
-        margin: 30px 0;
+        margin: 20px 0;
         border-bottom: 2px solid #000000;
       }
       .input-box label{
@@ -305,13 +305,13 @@ class PilotoCardAdmin extends HTMLElement {
       }
       .input-box input{
         width: 100%;
-        height: 50px;
+        height: 40px;
         background: transparent;
         border: none;
         outline: none;
         font-size: 1rem;
         color: #000000;
-        padding: 0 35px 0 5px;
+        padding: 0 0px 0 5px;
       }
       .button{
         width: 100%;
@@ -365,10 +365,10 @@ class PilotoCardAdmin extends HTMLElement {
         font-weight: bold;
       }
       .modal-body{
-      display: flex;
-      flex-direction: column; 
-      justify-content: center;
-      align-items: center;
+        display: flex;
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
         padding: 10px 15px;
 
       }
@@ -442,7 +442,7 @@ class PilotoCardAdmin extends HTMLElement {
     const buttonAdd = document.createElement('button')
     buttonAdd.setAttribute('data-modal-target', '#modal')
     buttonAdd.id = 'buttonAdd'
-    const formAdd = document.createElement('div')
+    const formAdd = document.createElement('form')
     const overlay = document.createElement('div')
     overlay.id = "overlay"
     formAdd.classList.add("modal")
@@ -455,23 +455,27 @@ class PilotoCardAdmin extends HTMLElement {
       </div>
       <div class="modal-body">
         <div class="input-box">
-          <input id="user" type="text" required>
+          <input id="name" type="text" required>
           <label>Nombre</label>
         </div>
         <div class="input-box">    
-          <input type="text" required>
+          <input type="text" required id="team">
           <label>Equipo</label>
         </div>
         <div class="input-box">    
-          <input type="text" required>
-          <label>Experiencia</label>
+          <input type="text" required id="rol">
+          <label>Rol</label>
         </div>
         <div class="input-box">    
-          <input type="text" required>
+          <input type="text" required id="experience">
+          <label>Años Experiencia</label>
+        </div>
+        <div class="input-box">    
+          <input type="text" required id="skills">
           <label>Habilidades</label>
         </div>
         <div class="input-box">    
-          <input type="text" required>
+          <input type="text" required id="image">
           <label>Url Imagen</label>
         </div>
         <button type="submit" class="button">Agregar</button>
@@ -508,6 +512,32 @@ class PilotoCardAdmin extends HTMLElement {
         }
       });
     });
+    const form = shadow.getElementById('modal');
+    if (form) {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); 
+
+      let name = shadow.getElementById('name').value;
+      let team = shadow.getElementById('team').value;
+      let rol = shadow.getElementById('rol').value
+      let experience = shadow.getElementById('experience').value;
+      let skills = shadow.getElementById('skills').value;
+      let image = shadow.getElementById('image').value;
+    
+      const newPiloto = { id: (pilotos.length) + 1, nombre: name, equipo: team, rol: rol, experiencia: experience, habilidades: skills.split(','), url: image }
+      pilotos.push(newPiloto)
+      localStorage.setItem("piloto", JSON.stringify(pilotos))
+      console.log(pilotos);
+      form.classList.remove('active');
+      overlay1.classList.remove('active');
+      name = ""
+      team = ""
+      rol = ""
+      experience = ""
+      skills = ""
+      image = ""
+      
+    })};
   }
 }
 

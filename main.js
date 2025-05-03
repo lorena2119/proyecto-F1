@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const container = document.getElementById('vehiculos-container');
 
 vehiculos.forEach((vehiculo, index) => {
-  const card = document.createElement("vehiculo-card");
+  const card = document.createElement("vehiculo-card-admin");
   card.data = vehiculo;
   card.dataset.id = index;
   container.appendChild(card);
