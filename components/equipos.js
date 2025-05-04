@@ -288,6 +288,8 @@ class EquiposCardAdmin extends HTMLElement {
         }
            .input-box2 {
     position: relative;
+    display: flex;
+    justify-content: center;
     width: 300px;
   }
   
@@ -385,6 +387,33 @@ class EquiposCardAdmin extends HTMLElement {
         font-weight: 500;
         font-family: "Bruno Ace SC";
       }
+        .button2 {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 35px;
+            height: 35px;
+            background: #d32f2f;
+            border: 2px solid #b71c1c;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            }
+
+       
+
+        .button2:hover {
+            background: #b71c1c;
+            transform: scale(1.1);
+            }
+
+        .button2:active {
+            transform: scale(0.9);
+            background: #880e4f;
+            }
       .modal{
         position: fixed;
         bottom: 50%;
@@ -449,8 +478,8 @@ class EquiposCardAdmin extends HTMLElement {
         }
             @media screen and (max-width: 1500px) {
         .container {
-          grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));font-family: "Bruno Ace SC";
-          margin: 1rem 35px;
+          grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+          font-family: "Bruno Ace SC";
           }
       }
       #buttonAdd{
@@ -518,7 +547,21 @@ class EquiposCardAdmin extends HTMLElement {
             <div class="section-title">Pilotos:</div>
             ${equipo.pilotos.map(h => `<span class="chip">${h}</span>`)}
           </div>
+          <button class="button2">
+            <span class="X"></span>
+            <span class="Y"></span>
+          </button>
         `;
+        const deleteButton = card.querySelector('.button2');
+        deleteButton.innerHTML="<box-icon name='trash' type='solid' color='#ffffff'; width='40px' ></box-icon>"
+        deleteButton.addEventListener('click', () => {
+          card.remove();
+          const index = equipos.findIndex(p => p.id === piloto.id);
+          if (index !== -1) {
+            pilotos.splice(index, 1);
+            localStorage.setItem("piloto", JSON.stringify(pilotos));
+          }
+        });
         
         container.appendChild(card);
   };
@@ -528,7 +571,7 @@ class EquiposCardAdmin extends HTMLElement {
       const buttonAdd = document.createElement('button');
     buttonAdd.setAttribute('data-modal-target', '#modal');
     buttonAdd.id = 'buttonAdd';
-    buttonAdd.textContent = 'Agregar Piloto';
+    buttonAdd.textContent = 'Agregar Equipo';
 
     const overlay = document.createElement('div');
     overlay.id = "overlay";
@@ -582,6 +625,68 @@ searchInput.addEventListener("input", () => {
 
   filteredteams.forEach(agregarTarjeta);
 });
+
+// Abrir y cerrar formulario de agregar piloto
+const openModalButtons = shadow.querySelectorAll('[data-modal-target]');
+const closeModalButtons = shadow.querySelectorAll('[data-close-button]');
+const overlay1 = shadow.getElementById('overlay');
+
+openModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = shadow.querySelector(button.dataset.modalTarget);
+    if (modal) {
+      modal.classList.add('active');
+      overlay1.classList.add('active');
+    }
+  });
+});
+
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = button.closest('.modal');
+    if (modal) {
+      modal.classList.remove('active');
+      overlay1.classList.remove('active');
+    }
+  });
+});
+
+// Manejo del formulario
+const form = shadow.getElementById('modal');
+if (form) {
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = shadow.getElementById('name').value;
+    const country = shadow.getElementById('country').value;
+    const motor = shadow.getElementById('motor').value;
+    const pilots = shadow.getElementById('pilots').value;
+    const image = shadow.getElementById('image').value;
+
+    const newteam = {
+      nombre: name,
+      pais: country,
+      motor: motor,
+      pilotos: pilots.split(',').map(h => h.trim()),
+      url: image
+    };
+
+    equipos.push(newteam);
+    localStorage.setItem("equipo", JSON.stringify(equipos));
+    agregarTarjeta(newteam); // Renderizar nuevo piloto
+
+    // Cerrar modal
+    form.classList.remove('active');
+    overlay1.classList.remove('active');
+
+    // Limpiar campos
+    shadow.getElementById('name').value = "";
+    shadow.getElementById('country').value = "";
+    shadow.getElementById('motor').value = "";
+    shadow.getElementById('pilots').value = "";
+    shadow.getElementById('image').value = "";
+  });
+}
 const teamsLinks = document.querySelectorAll('.teams-links');
 const teamsSection = document.getElementById('teams-section');
 const navLinks = document.querySelectorAll('nav a');
@@ -604,69 +709,8 @@ navLinks.forEach(link => {
   });
 });
 
-    // Abrir y cerrar formulario de agregar piloto
-    const openModalButtons = shadow.querySelectorAll('[data-modal-target]');
-    const closeModalButtons = shadow.querySelectorAll('[data-close-button]');
-    const overlay1 = shadow.getElementById('overlay');
-
-    openModalButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const modal = shadow.querySelector(button.dataset.modalTarget);
-        if (modal) {
-          modal.classList.add('active');
-          overlay1.classList.add('active');
-        }
-      });
-    });
-
-    closeModalButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const modal = button.closest('.modal');
-        if (modal) {
-          modal.classList.remove('active');
-          overlay1.classList.remove('active');
-        }
-      });
-    });
-
-    // Manejo del formulario
-    const form = shadow.getElementById('modal');
-    if (form) {
-      form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const name = shadow.getElementById('name').value;
-        const country = shadow.getElementById('country').value;
-        const motor = shadow.getElementById('motor').value;
-        const pilots = shadow.getElementById('pilots').value;
-        const image = shadow.getElementById('image').value;
-
-        const newteam = {
-          nombre: name,
-          pais: country,
-          motor: motor,
-          pilotos: pilots.split(',').map(h => h.trim()),
-          url: image
-        };
-
-        equipos.push(newteam);
-        localStorage.setItem("equipo", JSON.stringify(equipos));
-        renderCard(newteam); // Renderizar nuevo piloto
-
-        // Cerrar modal
-        form.classList.remove('active');
-        overlay1.classList.remove('active');
-
-        // Limpiar campos
-        shadow.getElementById('name').value = "";
-        shadow.getElementById('country').value = "";
-        shadow.getElementById('motor').value = "";
-        shadow.getElementById('pilots').value = "";
-        shadow.getElementById('image').value = "";
-      });
-    }
   }
 }
   
-  customElements.define('equipos-card-admin', EquiposCardAdmin);
+customElements.define('equipos-card-admin', EquiposCardAdmin);
   
