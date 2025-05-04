@@ -119,7 +119,6 @@ class PilotoCard extends HTMLElement {
 background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 35%, rgba(255, 255, 255, 0) 100%);
         }
         .input-box1{
-        position: relative;
         display: flex;
         justify-content: center;
         align
@@ -129,7 +128,6 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
          .input-box2 {
   position: relative;
   width: 300px;
-  margin: 30px 0 40px 30px;
 }
 
 .input-box2 input {
@@ -217,14 +215,14 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
   
       shadow.appendChild(style);
       const searchBox = document.createElement("div");
-searchBox.classList.add("input-box1");
-searchBox.innerHTML = `
-  <div class="input-box2">
-    <input id="searchInput" type="text" required placeholder=" ">
-    <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar piloto...</label>
-  </div>
-`;
-shadow.appendChild(searchBox);
+      searchBox.classList.add("input-box1");
+      searchBox.innerHTML = `
+        <div class="input-box2">
+          <input id="searchInput" type="text" required placeholder=" ">
+          <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar piloto...</label>
+        </div>
+      `;
+      shadow.appendChild(searchBox);
       shadow.appendChild(container);
       const searchInput = shadow.getElementById("searchInput");
 
@@ -396,14 +394,7 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
         margin: 20px 0;
         border-bottom: 2px solid #000000;
       }
-        .input-box1{
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align
-        width: 310px;
-        margin: 20px 0;
-      }
+
       .input-box label{
         position: absolute;
         top:50%;
@@ -555,10 +546,16 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
             transform: scale(0.9);
             background: #880e4f;
             }
-            .input-box2 {
+            .input-box1{
+        display: flex;
+        justify-content: center;
+        align
+        width: 310px;
+        margin: 20px 0;
+      }
+         .input-box2 {
   position: relative;
   width: 300px;
-  margin: 30px 0 40px 30px;
 }
 
 .input-box2 input {

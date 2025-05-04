@@ -13,6 +13,7 @@ html, body {
 }
 body {
   display: flex;
+  position: absolute;
   flex-direction: column;
   background: #000000;
 background: linear-gradient(180deg, rgba(0, 0, 0, 1) 9%, rgba(42, 42, 42, 0.79) 58%, rgba(255, 255, 255, 0) 100%);
@@ -653,6 +654,8 @@ article .icon {
 
 footer {
   height: 8vh;
+  width: 100%;
+  bottom: 0;
   background: #000000;
 background: linear-gradient(0deg, rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 0.79) 25%, rgba(255, 255, 255, 0) 100%);
   color: white;

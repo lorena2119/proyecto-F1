@@ -81,46 +81,59 @@ class CircuitoCard extends HTMLElement {
         margin-bottom: 0.3rem;
       }
 
-.button2 {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            width: 25px;
-            height: 25px;
-            background: #d32f2f;
-            border: 2px solid #b71c1c;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            }
+      .input-box1{
+        display: flex;
+        justify-content: center;
+        align
+        width: 310px;
+        margin: 20px 0;
+      }
+         .input-box2 {
+  position: relative;
+  width: 300px;
+}
 
-        .X, .Y {
-            position: absolute;
-            width: 16px;
-            height: 2px;
-            background: white;
-            }
+.input-box2 input {
+  width: 100%;
+  height: 40px;
+  padding: 10px 15px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+}
 
-        .X {
-            transform: rotate(45deg);
-            }
+.input-box2 input:focus {
+  border-color: #ff1f1f;
+  box-shadow: 0 0 10px #ff1f1f;
+}
 
-        .Y {
-            transform: rotate(-45deg);
-            }
+.input-box2 label {
+  position: absolute;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ccc;
+  pointer-events: none;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
 
-        .button2:hover {
-            background: #b71c1c;
-            transform: scale(1.1);
-            }
-
-        .button2:active {
-            transform: scale(0.9);
-            background: #880e4f;
-            }
+.input-box2 input:focus + label,
+.input-box2 input:not(:placeholder-shown) + label {
+  top: 0;
+  left: 12px;
+  font-size: 12px;
+  background: #b60000;
+  padding: 0 6px;
+  border-radius: 12px;
+  color: #fff;
+}
 
         .title {
           font-size: 1.2rem;
@@ -140,36 +153,62 @@ class CircuitoCard extends HTMLElement {
     const container = document.createElement("div")
     container.classList.add("container")
 
-    circuitos.forEach((circuito) => {
+    const agregarTarjeta = (circuito) => {
       const winnersList = circuito.ganadores.map(g => `<li>${g.temporada}: ${g.piloto}</li>`).join('');
-      const card = document.createElement("div")
+      const card = document.createElement("div");
       card.classList.add("card");
-      card.innerHTML =`<div class="header">
-        <div class="title">${circuito.nombre}</div>
-        <div class="country">${circuito.pais}</div>
-      </div>
-      <img class="track-img" src="${circuito.imagen}" alt="${circuito.nombre}">
-      <div class="info">
-            <div><strong>Longitud:</strong><br>${circuito.longitud_km} km</div>
-            <div><strong>Vueltas:</strong><br>${circuito.vueltas}</div>
-          </div>
-  
-          <div class="description">${circuito.descripcion}</div>
-  
-          <div class="record">
-            <div class="section-title">Récord de Vuelta:</div>
-            ${circuito.record_vuelta.tiempo} - ${circuito.record_vuelta.piloto} (${circuito.record_vuelta.año})
-          </div>
-  
-          <div class="winners">
-            <div class="section-title">Ganadores recientes:</div>
-            <ul>${winnersList}</ul>
-          </div>
-          `
-          container.appendChild(card);
-          shadow.appendChild(container)
-          shadow.appendChild(style)
-    });
+      card.innerHTML = `
+        <div class="header">
+          <div class="title">${circuito.nombre}</div>
+          <div class="country">${circuito.pais}</div>
+        </div>
+        <img class="track-img" src="${circuito.imagen}" alt="${circuito.nombre}">
+        <div class="info">
+          <div><strong>Longitud:</strong><br>${circuito.longitud_km} km</div>
+          <div><strong>Vueltas:</strong><br>${circuito.vueltas}</div>
+        </div>
+        <div class="description">${circuito.descripcion}</div>
+        <div class="record">
+          <div class="section-title">Récord de Vuelta:</div>
+          ${circuito.record_vuelta.tiempo} - ${circuito.record_vuelta.piloto} (${circuito.record_vuelta.año})
+        </div>
+        <div class="winners">
+          <div class="section-title">Ganadores recientes:</div>
+          <ul>${winnersList}</ul>
+        </div>
+      `;
+      
+      container.appendChild(card);
+};
+
+    circuitos.forEach(agregarTarjeta);
+    shadow.appendChild(style);
+    // Crear barra de búsqueda
+const searchBox = document.createElement("div");
+searchBox.classList.add("input-box1");
+searchBox.innerHTML = `
+  <div class="input-box2">
+    <input id="searchInput" type="text" required placeholder=" ">
+    <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar circuito...</label>
+  </div>
+`;
+    shadow.appendChild(searchBox);
+    shadow.appendChild(container);
+    const searchInput = shadow.getElementById("searchInput");
+
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+
+  // Limpiar contenedor antes de renderizar resultados filtrados
+  container.innerHTML = "";
+
+  const filteredPilotos = circuitos.filter(p =>
+    p.nombre.toLowerCase().includes(value) ||
+    p.pais.toLowerCase().includes(value)
+  );
+
+  filteredPilotos.forEach(agregarTarjeta);
+});
     
 const tracksLinks = document.querySelectorAll('.tracks-link');
 const tracksSection = document.getElementById('tracks-section');
@@ -468,6 +507,59 @@ class CircuitoCardAdmin extends HTMLElement{
       font-size: .9rem;
       color:rgba(0, 0, 0, 0.51)
       }
+      .input-box1{
+        display: flex;
+        justify-content: center;
+        align
+        width: 310px;
+        margin: 20px 0;
+      }
+         .input-box2 {
+  position: relative;
+  width: 300px;
+}
+
+.input-box2 input {
+  width: 100%;
+  height: 40px;
+  padding: 10px 15px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.input-box2 input:focus {
+  border-color: #ff1f1f;
+  box-shadow: 0 0 10px #ff1f1f;
+}
+
+.input-box2 label {
+  position: absolute;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ccc;
+  pointer-events: none;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
+
+.input-box2 input:focus + label,
+.input-box2 input:not(:placeholder-shown) + label {
+  top: 0;
+  left: 12px;
+  font-size: 12px;
+  background: #b60000;
+  padding: 0 6px;
+  border-radius: 12px;
+  color: #fff;
+}
     `;
 
     const container = document.createElement("div")
@@ -630,10 +722,35 @@ class CircuitoCardAdmin extends HTMLElement{
     });
 
     shadow.appendChild(style);
+    // Crear barra de búsqueda
+const searchBox = document.createElement("div");
+searchBox.classList.add("input-box1");
+searchBox.innerHTML = `
+  <div class="input-box2">
+    <input id="searchInput" type="text" required placeholder=" ">
+    <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar circuito...</label>
+  </div>
+`;
+shadow.appendChild(searchBox);
     shadow.appendChild(overlay);
     shadow.appendChild(formAdd);
     shadow.appendChild(container);
     shadow.appendChild(buttonAdd);
+    const searchInput = shadow.getElementById("searchInput");
+
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+
+  // Limpiar contenedor antes de renderizar resultados filtrados
+  container.innerHTML = "";
+
+  const filteredPilotos = circuitos.filter(p =>
+    p.nombre.toLowerCase().includes(value) ||
+    p.pais.toLowerCase().includes(value)
+  );
+
+  filteredPilotos.forEach(agregarTarjeta);
+});
 
     const openModalButtons = shadow.querySelectorAll('[data-modal-target]');
     const closeModalButtons = shadow.querySelectorAll('[data-close-button]');
