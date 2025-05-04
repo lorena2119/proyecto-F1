@@ -213,7 +213,6 @@ class CircuitoCardAdmin extends HTMLElement{
       grid-template-columns: repeat(3, minmax(250px, 1fr));
       gap: 2rem;
       padding: 2rem;
-      background: #111;
 }
 
     .container .header {
@@ -285,8 +284,8 @@ class CircuitoCardAdmin extends HTMLElement{
             position: absolute;
             bottom: 5px;
             right: 5px;
-            width: 25px;
-            height: 25px;
+            width: 35px;
+            height: 35px;
             background: #d32f2f;
             border: 2px solid #b71c1c;
             border-radius: 5px;
@@ -297,20 +296,7 @@ class CircuitoCardAdmin extends HTMLElement{
             justify-content: center;
             }
 
-        .X, .Y {
-            position: absolute;
-            width: 16px;
-            height: 2px;
-            background: white;
-            }
 
-        .X {
-            transform: rotate(45deg);
-            }
-
-        .Y {
-            transform: rotate(-45deg);
-            }
 
         .button2:hover {
             background: #b71c1c;
@@ -459,7 +445,8 @@ class CircuitoCardAdmin extends HTMLElement{
         bottom: 5%;
         font-family: "Bruno Ace SC";
         right: 10px;
-        background-color: rgb(225, 6, 0);
+         box-shadow: 0px 3px 20px rgba(255, 255, 255, 0.4);
+        background-color: rgb(0, 0, 0);
         z-index: 20000;
         height: 40px;
         border: none;
@@ -515,6 +502,7 @@ class CircuitoCardAdmin extends HTMLElement{
         </button>
       `;
       const deleteButton = card.querySelector(".button2");
+      deleteButton.innerHTML="<box-icon name='trash' type='solid' color='#ffffff'; width='40px' ></box-icon>"
       deleteButton.addEventListener("click", () => {
       const index = circuitos.findIndex(c =>
         c.nombre === circuito.nombre

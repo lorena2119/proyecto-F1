@@ -18,96 +18,105 @@ class PilotoCard extends HTMLElement {
           }
 
         .card {
-          background: #fff;
-          border: 3px solid #ddd;
-          border-radius: 12px;
-          overflow: hidden;
-          font-family: sans-serif;
-          position: relative;
-          min-height: 360px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-  
-        .card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.33);
-          border-right-color: red;
-          border-bottom-color: red;
-        }
-  
-        .info {
-          padding: 1rem 1rem 0 1rem;
-          display: flex;
-          flex-direction: column;
-          gap: 0.3rem;
-        }
-  
-        .nombre {
-          display: flex;
-          flex-direction: column;
-          line-height: 1.2;
-        }
-  
-        .nombre .nombre-pequeno {
-          font-family: 'Bruno Ace SC';
-          font-size: 0.7em;
-          text-transform: uppercase;
-          color: var(--color-2);
-          font-weight: 600;
-          letter-spacing: 0.05em;
-        }
-        
-        .nombre .apellido {
-          font-family: 'Bruno Ace SC';
-          font-size: 1.5em;
-          font-weight: bold;
-          color: #111;
-        }
-  
-        .equipo {
-          font-size: 0.95em;
-          color: #888;
-          margin-top: 0.3rem;
-          font-family: "Formula 1 Regular";
-        }
+        border-radius: 12px;
+        overflow: hidden;
 
-        .equipo:hover {
-          color: var(--color-1);
-        }
-  
-        .extra {
-          font-size: 0.8em;
-          margin-top: 0.4rem;
-          color: #333;
-          font-family: "Formula 1 Regular";
-          font-size: 0.75em;
-        }
-  
-        .habilidades {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.3rem;
-          margin-top: 0.5rem;
-          font-family: 'Bruno Ace SC';
-        }
-  
-        .chip {
-          background-color: var(--color-2);
-          color: white;
-          padding: 0.25rem 0.5rem;
-          border-radius: 999px;
-          font-size: 0.7em;
-          font-weight: 500;
-        }
+        background: #222;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s;
+        position:relative;
+
+
+        min-height: 360px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.33);
+        border-right-color: red;
+        border-bottom-color: red;
+      }
+
+      .info {
+        padding: 1rem 1rem 0 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .nombre {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+
+      .nombre .nombre-pequeno {
+        font-family: 'Bruno Ace SC';
+        font-size: 0.7em;
+        text-transform: uppercase;
+        color: #ff1e00;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+      }
+      
+      .nombre .apellido {
+        font-family: 'Bruno Ace SC';
+        font-size: 1.5em;
+        font-weight: bold;
+        color:rgb(254, 252, 252);
+      }
+
+      .equipo {
+        font-size: 0.95em;
+        color: #888;
+        margin-top: 0.3rem;
+        font-family: "Formula 1 Regular";
+      }
+
+      .equipo:hover {
+        color: var(--color-1);
+      }
+
+      .extra {
+        font-size: 0.8em;
+        margin-top: 0.4rem;
+        color:rgb(213, 213, 213);
+        font-family: "Formula 1 Regular";
+        font-size: 0.75em;
+      }
+
+      .habilidades {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+        font-family: 'Bruno Ace SC';
+      }
+
+      .chip {
+        background-color: #ff1e00;
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 999px;
+        font-size: 0.7em;
+        font-weight: 500;
+      }
   
         .foto {
           width: 100%;
           max-height: 180px;
           object-fit: contain;
           margin-top: auto;
+          background: #8f0000;
+background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 35%, rgba(255, 255, 255, 0) 100%);
         }
         
         @media screen and (max-width: 1500px) {
@@ -184,6 +193,7 @@ class PilotoCardAdmin extends HTMLElement {
     
     const style = document.createElement("style");
     style.textContent = `
+    
       .container {
         display: grid;
         grid-template-columns: repeat(4, minmax(245px, 340px));
@@ -193,12 +203,17 @@ class PilotoCardAdmin extends HTMLElement {
         }
 
       .card {
-        background: #fff;
-        border: 3px solid #ddd;
         border-radius: 12px;
         overflow: hidden;
-        font-family: sans-serif;
-        position: relative;
+
+        background: #222;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s;
+        position:relative;
+
+
         min-height: 360px;
         display: flex;
         flex-direction: column;
@@ -230,7 +245,7 @@ class PilotoCardAdmin extends HTMLElement {
         font-family: 'Bruno Ace SC';
         font-size: 0.7em;
         text-transform: uppercase;
-        color: var(--color-2);
+        color: #ff1e00;
         font-weight: 600;
         letter-spacing: 0.05em;
       }
@@ -239,7 +254,7 @@ class PilotoCardAdmin extends HTMLElement {
         font-family: 'Bruno Ace SC';
         font-size: 1.5em;
         font-weight: bold;
-        color: #111;
+        color:rgb(254, 252, 252);
       }
 
       .equipo {
@@ -256,7 +271,7 @@ class PilotoCardAdmin extends HTMLElement {
       .extra {
         font-size: 0.8em;
         margin-top: 0.4rem;
-        color: #333;
+        color:rgb(213, 213, 213);
         font-family: "Formula 1 Regular";
         font-size: 0.75em;
       }
@@ -264,13 +279,15 @@ class PilotoCardAdmin extends HTMLElement {
       .habilidades {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
         gap: 0.3rem;
         margin-top: 0.5rem;
         font-family: 'Bruno Ace SC';
       }
 
       .chip {
-        background-color: var(--color-2);
+        background-color: #ff1e00;
         color: white;
         padding: 0.25rem 0.5rem;
         border-radius: 999px;
@@ -283,6 +300,8 @@ class PilotoCardAdmin extends HTMLElement {
         max-height: 180px;
         object-fit: contain;
         margin-top: auto;
+        background: #8f0000;
+background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 35%, rgba(255, 255, 255, 0) 100%);
       }
   
       .input-box{
@@ -402,7 +421,8 @@ class PilotoCardAdmin extends HTMLElement {
       bottom: 5%;
       font-family: "Bruno Ace SC";
       right: 5%;
-      background-color: rgb(225, 6, 0);
+      box-shadow: 0px 3px 20px rgba(255, 255, 255, 0.4);
+      background-color: rgb(0, 0, 0);
       z-index: 20000;
       height: 40px;
         border: none;
