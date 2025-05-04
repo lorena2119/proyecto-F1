@@ -141,7 +141,7 @@ class CircuitoCard extends HTMLElement {
     container.classList.add("container")
 
     circuitos.forEach((circuito) => {
-      const winnersList = circuito.ganadores.map(g => `<li>${g.temporada}: Piloto #${g.piloto}</li>`).join('');
+      const winnersList = circuito.ganadores.map(g => `<li>${g.temporada}: ${g.piloto}</li>`).join('');
       const card = document.createElement("div")
       card.classList.add("card");
       card.innerHTML =`<div class="header">

@@ -8,9 +8,9 @@ export const circuitos = [
       condiciones_pista: "Urbano, superficie resbaladiza",
       record_vuelta: { tiempo: "1:10.166", piloto: "Lewis Hamilton", año: 2019 },
       ganadores: [
-        { temporada: 2021, piloto: 1 },
-        { temporada: 2022, piloto: 2 },
-        { temporada: 2023, piloto: 1 }
+        { temporada: 2021, piloto: "Max Verstappen" },
+        { temporada: 2022, piloto: "Sergio Pérez" },
+        { temporada: 2023, piloto: "Max Verstappen" }
       ],
       imagen: "https://img.redbull.com/images/q_auto,f_auto/redbullcom/2023/4/6/qf1iayummv79s4tdzkyy/plano-circuito-monaco-formula-1"
     },
@@ -23,9 +23,9 @@ export const circuitos = [
       condiciones_pista: "Asfalto, alta adherencia",
       record_vuelta: { tiempo: "1:27.097", piloto: "Max Verstappen", año: 2020 },
       ganadores: [
-        { temporada: 2021, piloto: 3 },
-        { temporada: 2022, piloto: 5 },
-        { temporada: 2023, piloto: 1 }
+        { temporada: 2021, piloto: "Lewis Hamilton" },
+        { temporada: 2022, piloto: "Charles Leclerc" },
+        { temporada: 2023, piloto: "Max Verstappen" }
       ],
       imagen: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Circuit_Silverstone_2011.svg"
     },
@@ -38,9 +38,9 @@ export const circuitos = [
       condiciones_pista: "Mixto, propenso a lluvia",
       record_vuelta: { tiempo: "1:46.286", piloto: "Valtteri Bottas", año: 2018 },
       ganadores: [
-        { temporada: 2021, piloto: 1 },
-        { temporada: 2022, piloto: 1 },
-        { temporada: 2023, piloto: 1 }
+        { temporada: 2021, piloto: "Max Verstappen" },
+        { temporada: 2022, piloto: "Max Verstappen" },
+        { temporada: 2023, piloto: "Max Verstappen" }
       ],
       imagen: "https://www.motoryracing.com/images/circuitos/0000/24.png"
     },
@@ -53,9 +53,9 @@ export const circuitos = [
       condiciones_pista: "Asfalto rápido, baja carga aerodinámica",
       record_vuelta: { tiempo: "1:21.046", piloto: "Rubens Barrichello", año: 2004 },
       ganadores: [
-        { temporada: 2021, piloto: 2 },
-        { temporada: 2022, piloto: 1 },
-        { temporada: 2023, piloto: 1 }
+        { temporada: 2021, piloto:"Sergio Pérez" },
+        { temporada: 2022, piloto: "Max Verstappen" },
+        { temporada: 2023, piloto: "Max Verstappen" }
       ],
       imagen: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Monza_1976-1993.png"
     },
@@ -68,9 +68,9 @@ export const circuitos = [
       condiciones_pista: "Asfalto técnico, cambios de altitud",
       record_vuelta: { tiempo: "1:10.540", piloto: "Valtteri Bottas", año: 2018 },
       ganadores: [
-        { temporada: 2021, piloto: 3 },
-        { temporada: 2022, piloto: 1 },
-        { temporada: 2023, piloto: 1 }
+        { temporada: 2021, piloto: "Lewis Hamilton" },
+        { temporada: 2022, piloto: "Max Verstappen" },
+        { temporada: 2023, piloto: "Max Verstappen" }
       ],
       imagen: "https://www.racingatmosphere.net/wp-content/uploads/2018/08/Circuit_Interlagos.svg_.png"
     },
@@ -83,9 +83,9 @@ export const circuitos = [
       condiciones_pista: "Moderno, buena visibilidad nocturna",
       record_vuelta: { tiempo: "1:39.283", piloto: "Lewis Hamilton", año: 2019 },
       ganadores: [
-        { temporada: 2021, piloto: 1 },
-        { temporada: 2022, piloto: 1 },
-        { temporada: 2023, piloto: 3 }
+        { temporada: 2021, piloto: "Max Verstappen" },
+        { temporada: 2022, piloto: "Max Verstappen" },
+        { temporada: 2023, piloto:"Lewis Hamilton" }
       ],
       imagen: "https://upload.wikimedia.org/wikipedia/commons/d/dc/Circuit_Yas-Island.svg"
     },
@@ -98,9 +98,9 @@ export const circuitos = [
       condiciones_pista: "Técnico, superficie con buena adherencia",
       record_vuelta: { tiempo: "1:30.983", piloto: "Lewis Hamilton", año: 2019 },
       ganadores: [
-        { temporada: 2021, piloto: 1 },
-        { temporada: 2022, piloto: 1 },
-        { temporada: 2023, piloto: 1 }
+        { temporada: 2021, piloto: "Max Verstappen" },
+        { temporada: 2022, piloto: "Max Verstappen" },
+        { temporada: 2023, piloto: "Max Verstappen" }
       ],
       imagen: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Suzuka_circuit_map--2005.svg"
     }

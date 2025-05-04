@@ -413,6 +413,47 @@ class PilotoCardAdmin extends HTMLElement {
         color: #ffffff;
         font-weight: 500;
       }
+
+      .button2 {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 25px;
+            height: 25px;
+            background: #d32f2f;
+            border: 2px solid #b71c1c;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            }
+
+        .X, .Y {
+            position: absolute;
+            width: 16px;
+            height: 2px;
+            background: white;
+            }
+
+        .X {
+            transform: rotate(45deg);
+            }
+
+        .Y {
+            transform: rotate(-45deg);
+            }
+
+        .button2:hover {
+            background: #b71c1c;
+            transform: scale(1.1);
+            }
+
+        .button2:active {
+            transform: scale(0.9);
+            background: #880e4f;
+            }
     `;
 
     const container = document.createElement("div");
@@ -424,6 +465,7 @@ class PilotoCardAdmin extends HTMLElement {
 
       const card = document.createElement("div");
       card.classList.add("card");
+      card.setAttribute('data-id', piloto.id);
       card.innerHTML = `
         <div class="info">
           <div class="nombre">
@@ -438,9 +480,23 @@ class PilotoCardAdmin extends HTMLElement {
           </div>
         </div>
         <img class="foto" src="${piloto.url}" alt="${piloto.nombre}">
-      `;
-      container.appendChild(card);
-    };
+        <button class="button2">
+            <span class="X"></span>
+            <span class="Y"></span>
+          </button>
+        `;
+        const deleteButton = card.querySelector('.button2');
+        deleteButton.addEventListener('click', () => {
+          card.remove();
+          const index = pilotos.findIndex(p => p.id === piloto.id);
+          if (index !== -1) {
+            pilotos.splice(index, 1);
+            localStorage.setItem("piloto", JSON.stringify(pilotos));
+          }
+        });
+    
+        container.appendChild(card);
+      };
 
     // Renderizar pilotos iniciales
     pilotos.forEach(renderCard);
