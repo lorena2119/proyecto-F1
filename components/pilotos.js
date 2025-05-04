@@ -1,4 +1,6 @@
-import { pilotos } from "../data/pilotos.js";
+import { pilotos as pilotosBase } from "../data/pilotos.js";
+let pilotos = JSON.parse(localStorage.getItem("piloto")) || pilotosBase;
+
 
 class PilotoCard extends HTMLElement {
     constructor() {
@@ -416,7 +418,7 @@ class PilotoCardAdmin extends HTMLElement {
     const container = document.createElement("div");
     container.classList.add("container");
 
-    pilotos.forEach((piloto) => {
+    const renderCard = (piloto) => {
       const [nombre, ...resto] = piloto.nombre.split(" ");
       const apellido = resto.join(" ");
 
@@ -438,57 +440,45 @@ class PilotoCardAdmin extends HTMLElement {
         <img class="foto" src="${piloto.url}" alt="${piloto.nombre}">
       `;
       container.appendChild(card);
-    });
-    const buttonAdd = document.createElement('button')
-    buttonAdd.setAttribute('data-modal-target', '#modal')
-    buttonAdd.id = 'buttonAdd'
-    const formAdd = document.createElement('form')
-    const overlay = document.createElement('div')
-    overlay.id = "overlay"
-    formAdd.classList.add("modal")
-    formAdd.id = 'modal'
-    buttonAdd.textContent = 'Agregar Piloto'
+    };
+
+    // Renderizar pilotos iniciales
+    pilotos.forEach(renderCard);
+
+    const buttonAdd = document.createElement('button');
+    buttonAdd.setAttribute('data-modal-target', '#modal');
+    buttonAdd.id = 'buttonAdd';
+    buttonAdd.textContent = 'Agregar Piloto';
+
+    const overlay = document.createElement('div');
+    overlay.id = "overlay";
+
+    const formAdd = document.createElement('form');
+    formAdd.classList.add("modal");
+    formAdd.id = 'modal';
     formAdd.innerHTML = `
       <div class="modal-header">
         <h2>Nuevo Piloto</h2>
         <button data-close-button class="close-button">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="input-box">
-          <input id="name" type="text" required>
-          <label>Nombre</label>
-        </div>
-        <div class="input-box">    
-          <input type="text" required id="team">
-          <label>Equipo</label>
-        </div>
-        <div class="input-box">    
-          <input type="text" required id="rol">
-          <label>Rol</label>
-        </div>
-        <div class="input-box">    
-          <input type="text" required id="experience">
-          <label>Años Experiencia</label>
-        </div>
-        <div class="input-box">    
-          <input type="text" required id="skills">
-          <label>Habilidades</label>
-        </div>
-        <div class="input-box">    
-          <input type="text" required id="image">
-          <label>Url Imagen</label>
-        </div>
+        <div class="input-box"><input id="name" type="text" required><label>Nombre</label></div>
+        <div class="input-box"><input type="text" required id="team"><label>Equipo</label></div>
+        <div class="input-box"><input type="text" required id="rol"><label>Rol</label></div>
+        <div class="input-box"><input type="text" required id="experience"><label>Años Experiencia</label></div>
+        <div class="input-box"><input type="text" required id="skills"><label>Habilidades (coma separadas)</label></div>
+        <div class="input-box"><input type="text" required id="image"><label>Url Imagen</label></div>
         <button type="submit" class="button">Agregar</button>
-        </div>
       </div>
-      
-    `
+    `;
+
     shadow.appendChild(style);
-    shadow.appendChild(overlay)
+    shadow.appendChild(overlay);
     shadow.appendChild(formAdd);
     shadow.appendChild(container);
     shadow.appendChild(buttonAdd);
-    
+
+    // Abrir y cerrar formulario de agregar piloto
     const openModalButtons = shadow.querySelectorAll('[data-modal-target]');
     const closeModalButtons = shadow.querySelectorAll('[data-close-button]');
     const overlay1 = shadow.getElementById('overlay');
@@ -512,59 +502,49 @@ class PilotoCardAdmin extends HTMLElement {
         }
       });
     });
+
+    // Manejo del formulario
     const form = shadow.getElementById('modal');
     if (form) {
-    form.addEventListener('submit', function(event) {
-      event.preventDefault(); 
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-      let name = shadow.getElementById('name').value;
-      let team = shadow.getElementById('team').value;
-      let rol = shadow.getElementById('rol').value
-      let experience = shadow.getElementById('experience').value;
-      let skills = shadow.getElementById('skills').value;
-      let image = shadow.getElementById('image').value;
-    
-      const newPiloto = { id: (pilotos.length) + 1, nombre: name, equipo: team, rol: rol, experiencia: experience, habilidades: skills.split(','), url: image }
-      pilotos.push(newPiloto)
-      localStorage.setItem("piloto", JSON.stringify(pilotos))
-      console.log(pilotos);
-      form.classList.remove('active');
-      overlay1.classList.remove('active');
-      name = ""
-      team = ""
-      rol = ""
-      experience = ""
-      skills = ""
-      image = ""
-      
-    })};
+        const name = shadow.getElementById('name').value;
+        const team = shadow.getElementById('team').value;
+        const rol = shadow.getElementById('rol').value;
+        const experience = shadow.getElementById('experience').value;
+        const skills = shadow.getElementById('skills').value;
+        const image = shadow.getElementById('image').value;
+
+        const newPiloto = {
+          id: pilotos.length + 1,
+          nombre: name,
+          equipo: team,
+          rol: rol,
+          experiencia: experience,
+          habilidades: skills.split(',').map(h => h.trim()),
+          url: image
+        };
+
+        pilotos.push(newPiloto);
+        localStorage.setItem("piloto", JSON.stringify(pilotos));
+        renderCard(newPiloto); // Renderizar nuevo piloto
+
+        // Cerrar modal
+        form.classList.remove('active');
+        overlay1.classList.remove('active');
+
+        // Limpiar campos
+        shadow.getElementById('name').value = "";
+        shadow.getElementById('team').value = "";
+        shadow.getElementById('rol').value = "";
+        shadow.getElementById('experience').value = "";
+        shadow.getElementById('skills').value = "";
+        shadow.getElementById('image').value = "";
+      });
+    }
   }
 }
 
-const driversLinksAdmin = document.querySelectorAll('.drivers-link');
-const driversSectionAdmin = document.getElementById('drivers-section');
-const navLinksAdmin = document.querySelectorAll('nav a');
-
-
-
-navLinksAdmin.forEach(link => {
-link.addEventListener('click', (e) => {
-  e.preventDefault();
-
-
-  if ([...driversLinksAdmin].includes(link)) {
-    driversSectionAdmin.style.display = 'block';
-  } else {
-    driversSectionAdmin.style.display = 'none';
-  }
-
-
-  if (window.innerWidth <= 768) {
-    toggleMenu();
-  }
-});
-});
-
 customElements.define('piloto-card-admin', PilotoCardAdmin);
-  
   
