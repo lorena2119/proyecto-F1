@@ -1,4 +1,5 @@
 import './components/circuitos.js'
+import './components/equipos.js'
 import './components/pilotos.js'
 import './components/simulacion.js'
 import './components/vehiculos.js';
@@ -50,26 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
   
-let vehiculos = JSON.parse(localStorage.getItem("vehiculos_guardados")) || [...vehiculosData];
-const container = document.getElementById('vehiculos-container');
-
-vehiculos.forEach((vehiculo, index) => {
-  const card = document.createElement("vehiculo-card-admin");
-  card.data = vehiculo;
-  card.dataset.id = index;
-  container.appendChild(card);
-
-  card.addEventListener("vehiculo-eliminado", (e) => {
-    const id = e.detail;
-    vehiculos.splice(id, 1); 
-    card.remove(); 
-    localStorage.setItem("vehiculos_guardados", JSON.stringify(vehiculos));
-  })
-
-  let vehiculosGuardados = localStorage.getItem("vehiculos_guardados");
-  if (vehiculosGuardados) {
-    vehiculos = JSON.parse(vehiculosGuardados); 
-  }})
 
 
 

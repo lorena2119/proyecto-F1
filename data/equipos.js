@@ -1,4 +1,4 @@
-const equipos = [
+export let equipos = [
     {
         nombre: "Red Bull Racing",
         pais: "Austria",
