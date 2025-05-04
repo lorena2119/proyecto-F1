@@ -46,7 +46,7 @@ export let equipos = [
         pais: "Suiza",
         motor: "Ferrari",
         pilotos: [13, 14],
-        imagen: "https://static.wikia.nocookie.net/haddozf1/images/b/b2/LRUIly0V_400x400.jpg/revision/latest?cb=20190223004152&path-prefix=es"
+        imagen: "https://vtlogo.com/wp-content/uploads/2020/03/alfa-romeo-racing-vector-logo-small.png"
     },
     {
         nombre: "Haas",

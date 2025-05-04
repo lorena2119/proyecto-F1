@@ -72,9 +72,12 @@ class EquiposCard extends HTMLElement {
         width: 310px;
         margin: 20px 0;
       }
-         .input-box2 {
-  position: relative;
-  width: 300px;
+        .input-box2 {
+            position: relative;
+            width: 300px;
+            display: flex;
+            position: relative;
+            justify-content: center;
 }
 
 .input-box2 input {
@@ -130,7 +133,6 @@ class EquiposCard extends HTMLElement {
           @media screen and (max-width: 1500px) {
         .container {
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));font-family: "Bruno Ace SC";
-          margin: 1rem 35px;
           }
     `;
 
