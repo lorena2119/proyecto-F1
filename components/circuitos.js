@@ -1,4 +1,5 @@
-import { circuitos } from "../data/circuitos.js";
+import  { circuitos as circuitosBase }  from "../data/circuitos.js";
+let circuitos = JSON.parse(localStorage.getItem("circuitos")) || circuitosBase;
 
 class CircuitoCard extends HTMLElement {
   constructor(){
@@ -13,7 +14,6 @@ class CircuitoCard extends HTMLElement {
       grid-template-columns: repeat(3, minmax(250px, 1fr));
       gap: 2rem;
       padding: 2rem;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
     .container .header {
@@ -486,38 +486,40 @@ class CircuitoCardAdmin extends HTMLElement{
     const container = document.createElement("div")
     container.classList.add("container")
 
-    circuitos.forEach((circuito) => {
-      const winnersList = circuito.ganadores.map(g => `<li>${g.temporada}: Piloto #${g.piloto}</li>`).join('');
-      const card = document.createElement("div")
+    const agregarTarjeta = (circuito) => {
+      const winnersList = circuito.ganadores.map(g => `<li>${g.temporada}: ${g.piloto}</li>`).join('');
+      const card = document.createElement("div");
       card.classList.add("card");
-      card.innerHTML =`<div class="header">
-        <div class="title">${circuito.nombre}</div>
-        <div class="country">${circuito.pais}</div>
-      </div>
-      <img class="track-img" src="${circuito.imagen}" alt="${circuito.nombre}">
-      <div class="info">
-            <div><strong>Longitud:</strong><br>${circuito.longitud_km} km</div>
-            <div><strong>Vueltas:</strong><br>${circuito.vueltas}</div>
-          </div>
-  
-          <div class="description">${circuito.descripcion}</div>
-  
-          <div class="record">
-            <div class="section-title">Récord de Vuelta:</div>
-            ${circuito.record_vuelta.tiempo} - ${circuito.record_vuelta.piloto} (${circuito.record_vuelta.año})
-          </div>
-  
-          <div class="winners">
-            <div class="section-title">Ganadores recientes:</div>
-            <ul>${winnersList}</ul>
-          </div>
-      <button class="button2">
-            <span class="X"></span>
-            <span class="Y"></span>
-          </button>
-          `
-          container.appendChild(card);
-    });
+      card.innerHTML = `
+        <div class="header">
+          <div class="title">${circuito.nombre}</div>
+          <div class="country">${circuito.pais}</div>
+        </div>
+        <img class="track-img" src="${circuito.imagen}" alt="${circuito.nombre}">
+        <div class="info">
+          <div><strong>Longitud:</strong><br>${circuito.longitud_km} km</div>
+          <div><strong>Vueltas:</strong><br>${circuito.vueltas}</div>
+        </div>
+        <div class="description">${circuito.descripcion}</div>
+        <div class="record">
+          <div class="section-title">Récord de Vuelta:</div>
+          ${circuito.record_vuelta.tiempo} - ${circuito.record_vuelta.piloto} (${circuito.record_vuelta.año})
+        </div>
+        <div class="winners">
+          <div class="section-title">Ganadores recientes:</div>
+          <ul>${winnersList}</ul>
+        </div>
+        <button class="button2">
+          <span class="X"></span>
+          <span class="Y"></span>
+        </button>
+      `;
+      container.appendChild(card);
+    };
+
+    circuitos.forEach(agregarTarjeta);
+
+
     const buttonAdd = document.createElement('button')
     buttonAdd.setAttribute('data-modal-target', '#modal')
     buttonAdd.id = 'buttonAdd'
@@ -529,7 +531,7 @@ class CircuitoCardAdmin extends HTMLElement{
     buttonAdd.textContent = 'Agregar Circuito'
     formAdd.innerHTML = `
       <div class="modal-header">
-        <h2>Nuevo Piloto</h2>
+        <h2>Nuevo Circuito</h2>
         <button data-close-button class="close-button">&times;</button>
       </div>
       <div class="modal-body">
@@ -596,22 +598,53 @@ class CircuitoCardAdmin extends HTMLElement{
       </div>
       
     `
+    formAdd.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const nuevoCircuito = {
+        nombre: shadow.getElementById("name").value,
+        pais: shadow.getElementById("country").value,
+        longitud_km: parseFloat(shadow.getElementById("lenght").value),
+        vueltas: parseInt(shadow.getElementById("laps").value),
+        descripcion: shadow.getElementById("description").value,
+        imagen: shadow.getElementById("image").value,
+        record_vuelta: {
+          tiempo: shadow.getElementById("time").value,
+          piloto: shadow.getElementById("pilot").value,
+          año: parseInt(shadow.getElementById("year").value)
+        },
+        ganadores: [
+          {
+            temporada: shadow.getElementById("season").value,
+            piloto: shadow.getElementById("name-winner").value
+          }
+        ]
+      };
+
+      circuitos.push(nuevoCircuito);
+      localStorage.setItem("circuitos", JSON.stringify(circuitos));
+      agregarTarjeta(nuevoCircuito);
+
+      formAdd.reset();
+      formAdd.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+
     shadow.appendChild(style);
-    shadow.appendChild(overlay)
+    shadow.appendChild(overlay);
     shadow.appendChild(formAdd);
     shadow.appendChild(container);
     shadow.appendChild(buttonAdd);
 
     const openModalButtons = shadow.querySelectorAll('[data-modal-target]');
     const closeModalButtons = shadow.querySelectorAll('[data-close-button]');
-    const overlay1 = shadow.getElementById('overlay');
 
     openModalButtons.forEach(button => {
       button.addEventListener('click', () => {
         const modal = shadow.querySelector(button.dataset.modalTarget);
         if (modal) {
           modal.classList.add('active');
-          overlay1.classList.add('active');
+          overlay.classList.add('active');
         }
       });
     });
@@ -621,11 +654,13 @@ class CircuitoCardAdmin extends HTMLElement{
         const modal = button.closest('.modal');
         if (modal) {
           modal.classList.remove('active');
-          overlay1.classList.remove('active');
+          overlay.classList.remove('active');
         }
       });
     });
-    const tracksLinks = document.querySelectorAll('.tracks-link');
+  }}
+    
+const tracksLinks = document.querySelectorAll('.tracks-link');
 const tracksSection = document.getElementById('tracks-section');
 const navLinks = document.querySelectorAll('nav a');
 
@@ -646,6 +681,6 @@ navLinks.forEach(link => {
     }
   });
 });
-  }}
+  
 
   customElements.define('circuito-card-admin', CircuitoCardAdmin);
