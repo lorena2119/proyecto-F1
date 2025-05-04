@@ -20,15 +20,13 @@ class PilotoCard extends HTMLElement {
         .card {
         border-radius: 12px;
         overflow: hidden;
-
+        border: 2px solid #ff3c3c;
         background: #222;
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         transition: transform 0.3s;
         position:relative;
-
-
         min-height: 360px;
         display: flex;
         flex-direction: column;
@@ -292,15 +290,13 @@ class PilotoCardAdmin extends HTMLElement {
       .card {
         border-radius: 12px;
         overflow: hidden;
-
+        border: 2px solid #ff3c3c;
         background: #222;
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         transition: transform 0.3s;
         position:relative;
-
-
         min-height: 360px;
         display: flex;
         flex-direction: column;

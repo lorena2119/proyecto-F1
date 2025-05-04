@@ -20,6 +20,7 @@ class CircuitoCard extends HTMLElement {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border: 2px solid #ff3c3c;
       background: #1f1f1f;
       padding: 0.75rem 1rem;
       border-radius: 10px 10px 0 0;
@@ -270,6 +271,7 @@ class CircuitoCardAdmin extends HTMLElement{
 .card {
   background: #222;
   border-radius: 12px;
+    border: 2px solid #ff3c3c;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s;
