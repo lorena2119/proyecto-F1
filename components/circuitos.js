@@ -89,8 +89,11 @@ class CircuitoCard extends HTMLElement {
         margin: 20px 0;
       }
          .input-box2 {
-  position: relative;
-  width: 300px;
+            position: relative;
+            width: 300px;
+            display: flex;
+            position: relative;
+            justify-content: center;
 }
 
 .input-box2 input {
@@ -146,7 +149,6 @@ class CircuitoCard extends HTMLElement {
           @media screen and (max-width: 1500px) {
         .container {
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));font-family: "Bruno Ace SC";
-          margin: 1rem 35px;
           }
     `;
 
@@ -475,7 +477,6 @@ class CircuitoCardAdmin extends HTMLElement{
         .container {
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           font-family: "Bruno Ace SC";
-          margin: 1rem 35px;
         }
       }
       #buttonAdd{
@@ -515,8 +516,11 @@ class CircuitoCardAdmin extends HTMLElement{
         margin: 20px 0;
       }
          .input-box2 {
-  position: relative;
-  width: 300px;
+            position: relative;
+            width: 300px;
+            display: flex;
+            position: relative;
+            justify-content: center;
 }
 
 .input-box2 input {

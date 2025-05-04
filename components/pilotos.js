@@ -125,9 +125,12 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
         width: 310px;
         margin: 20px 0;
       }
-         .input-box2 {
-  position: relative;
-  width: 300px;
+        .input-box2 {
+            position: relative;
+            width: 300px;
+            display: flex;
+            position: relative;
+            justify-content: center;
 }
 
 .input-box2 input {
@@ -554,8 +557,11 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
         margin: 20px 0;
       }
          .input-box2 {
-  position: relative;
-  width: 300px;
+            position: relative;
+            width: 300px;
+            display: flex;
+            position: relative;
+            justify-content: center;
 }
 
 .input-box2 input {
