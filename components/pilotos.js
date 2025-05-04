@@ -118,6 +118,61 @@ class PilotoCard extends HTMLElement {
           background: #8f0000;
 background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 35%, rgba(255, 255, 255, 0) 100%);
         }
+        .input-box1{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align
+        width: 310px;
+        margin: 20px 0;
+      }
+         .input-box2 {
+  position: relative;
+  width: 300px;
+  margin: 30px 0 40px 30px;
+}
+
+.input-box2 input {
+  width: 100%;
+  height: 40px;
+  padding: 10px 15px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.input-box2 input:focus {
+  border-color: #ff1f1f;
+  box-shadow: 0 0 10px #ff1f1f;
+}
+
+.input-box2 label {
+  position: absolute;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ccc;
+  pointer-events: none;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
+
+.input-box2 input:focus + label,
+.input-box2 input:not(:placeholder-shown) + label {
+  top: 0;
+  left: 12px;
+  font-size: 12px;
+  background: #b60000;
+  padding: 0 6px;
+  border-radius: 12px;
+  color: #fff;
+}
         
         @media screen and (max-width: 1500px) {
           .container {
@@ -130,32 +185,63 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
       const container = document.createElement("div");
       container.classList.add("container");
 
-      pilotos.forEach((piloto) => {
-        const [nombre, ...resto] = piloto.nombre.split(" ");
-        const apellido = resto.join(" ");
-  
-        const card = document.createElement("div");
-        card.classList.add("card");
-        card.innerHTML = `
-          <div class="info">
-            <div class="nombre">
-              <span class="nombre-pequeno">${nombre}</span>
-              <span class="apellido">${apellido}</span>
-            </div>
-            <div class="equipo">${piloto.equipo}</div>
-            <div class="extra"><strong>Rol:</strong> ${piloto.rol}</div>
-            <div class="extra"><strong>Experiencia:</strong> ${piloto.experiencia} años</div>
-            <div class="habilidades">
-              ${piloto.habilidades.map(h => `<span class="chip">${h}</span>`).join('')}
-            </div>
+      
+    const renderCard = (piloto) => {
+      const [nombre, ...resto] = piloto.nombre.split(" ");
+      const apellido = resto.join(" ");
+
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.setAttribute('data-id', piloto.id);
+      card.innerHTML = `
+        <div class="info">
+          <div class="nombre">
+            <span class="nombre-pequeno">${nombre}</span>
+            <span class="apellido">${apellido}</span>
           </div>
-          <img class="foto" src="${piloto.url}" alt="${piloto.nombre}">
+          <div class="equipo">${piloto.equipo}</div>
+          <div class="extra"><strong>Rol:</strong> ${piloto.rol}</div>
+          <div class="extra"><strong>Experiencia:</strong> ${piloto.experiencia} años</div>
+          <div class="habilidades">
+            ${piloto.habilidades.map(h => `<span class="chip">${h}</span>`).join('')}
+          </div>
+        </div>
+        <img class="foto" src="${piloto.url}" alt="${piloto.nombre}">
         `;
+    
         container.appendChild(card);
-      });
+      };
+
+    // Renderizar pilotos iniciales
+    pilotos.forEach(renderCard);
   
       shadow.appendChild(style);
+      const searchBox = document.createElement("div");
+searchBox.classList.add("input-box1");
+searchBox.innerHTML = `
+  <div class="input-box2">
+    <input id="searchInput" type="text" required placeholder=" ">
+    <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar piloto...</label>
+  </div>
+`;
+shadow.appendChild(searchBox);
       shadow.appendChild(container);
+      const searchInput = shadow.getElementById("searchInput");
+
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+
+  // Limpiar contenedor antes de renderizar resultados filtrados
+  container.innerHTML = "";
+
+  const filteredPilotos = pilotos.filter(p =>
+    p.nombre.toLowerCase().includes(value) ||
+    p.equipo.toLowerCase().includes(value) ||
+    p.rol.toLowerCase().includes(value)
+  );
+
+  filteredPilotos.forEach(renderCard);
+});
 
     }
 }
@@ -310,6 +396,14 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
         margin: 20px 0;
         border-bottom: 2px solid #000000;
       }
+        .input-box1{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align
+        width: 310px;
+        margin: 20px 0;
+      }
       .input-box label{
         position: absolute;
         top:50%;
@@ -461,6 +555,54 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
             transform: scale(0.9);
             background: #880e4f;
             }
+            .input-box2 {
+  position: relative;
+  width: 300px;
+  margin: 30px 0 40px 30px;
+}
+
+.input-box2 input {
+  width: 100%;
+  height: 40px;
+  padding: 10px 15px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.input-box2 input:focus {
+  border-color: #ff1f1f;
+  box-shadow: 0 0 10px #ff1f1f;
+}
+
+.input-box2 label {
+  position: absolute;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ccc;
+  pointer-events: none;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
+
+.input-box2 input:focus + label,
+.input-box2 input:not(:placeholder-shown) + label {
+  top: 0;
+  left: 12px;
+  font-size: 12px;
+  background: #b60000;
+  padding: 0 6px;
+  border-radius: 12px;
+  color: #fff;
+}
+
     `;
 
     const container = document.createElement("div");
@@ -537,10 +679,37 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
     `;
 
     shadow.appendChild(style);
+
+    // Crear barra de búsqueda
+const searchBox = document.createElement("div");
+searchBox.classList.add("input-box1");
+searchBox.innerHTML = `
+  <div class="input-box2">
+    <input id="searchInput" type="text" required placeholder=" ">
+    <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar piloto...</label>
+  </div>
+`;
+shadow.appendChild(searchBox);
     shadow.appendChild(overlay);
     shadow.appendChild(formAdd);
     shadow.appendChild(container);
     shadow.appendChild(buttonAdd);
+    const searchInput = shadow.getElementById("searchInput");
+
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+
+  // Limpiar contenedor antes de renderizar resultados filtrados
+  container.innerHTML = "";
+
+  const filteredPilotos = pilotos.filter(p =>
+    p.nombre.toLowerCase().includes(value) ||
+    p.equipo.toLowerCase().includes(value) ||
+    p.rol.toLowerCase().includes(value)
+  );
+
+  filteredPilotos.forEach(renderCard);
+});
 
     // Abrir y cerrar formulario de agregar piloto
     const openModalButtons = shadow.querySelectorAll('[data-modal-target]');
