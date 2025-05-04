@@ -1,194 +1,293 @@
 import {vehiculos as vehiculo} from "../data/vehiculos.js"
 const vehiculos = JSON.parse(localStorage.getItem("vehiculos")) || vehiculo;
 class VehiculoCard extends HTMLElement {
-    constructor() {
-      super();
-      this.attachShadow({ mode: "open" });
-    }
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
   
-    set data(data) {
-      const style = `
-        <style>
-          .card {
-            font-family: 'Segoe UI', sans-serif;
-            background: #ffffff;
-            border: 3px solid #dedede;
-            border-radius: 16px;
-            padding: 1rem;
-            max-width: 360px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position:relative;
-          }
-          
-          .card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.33);
-          border-right-color: red;
-          border-bottom-color: red;
-        }
-  
-          .card h2 {
-            margin: 0;
-            font-size: 1.3rem;
-            color: var(--color-2);
-          }
-  
-          .card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-          }
-  
-          .subtitulo {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #333;
-          }
-  
-          .stats {
-            font-size: 0.85rem;
-            text-align: left;
-            width: 100%;
-          }
-  
-          .stats p {
-            margin: 4px 0;
-            font-family: "Formula 1 Regular";
-            font-size: 0.8rem;
-          }
-  
-          .modo {
-            margin-top: 0.5rem;
-            font-weight: bold;
-            color: #555;
-            font-family: "Bruno Ace SC";
+    const style = document.createElement("style");
+    style.textContent = `
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      font-family: "Bruno Ace SC";
+}
+
+
+
+    .card {
+  background-color: #1c1c1e;
+  color: #f0f0f0;
+  border: 2px solid #ff3c3c;
+  border-radius: 16px;
+  padding: 1.2rem;
+  margin: 1rem;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #ff3c3c;
+}
+
+.card .subtitulo {
+  font-size: 1rem;
+  color: #bbb;
+  font-style: italic;
+  margin-bottom: 0.8rem;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #ff3c3c;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.card .stats p {
+  font-size: 0.95rem;
+  margin: 0.3rem 0;
+  color:white;
+}
+
+.card hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 0.8rem 0;
+}
+
+.card .modo {
+  margin-top: 0.8rem;
+  color: #ff3c3c;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0.2rem 0;
+  color:white;
+}
+
+
+        .button2 {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          width: 35px;
+          height: 35px;
+          background: #d32f2f;
+          border: 2px solid #b71c1c;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: transform 0.2s, background 0.3s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           }
 
-          .modo:hover {
-            color: var(--color-2);
-          }
-  
-          hr {
-            width: 100%;
-            border: 0;
-            border-top: 1px solid #ddd;
-            margin: 8px 0;
+      .X, .Y {
+          position: absolute;
+          width: 16px;
+          height: 2px;
+          background: white;
           }
 
-          .button {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 25px;
-            height: 25px;
-            background: #d32f2f;
-            border: 2px solid #b71c1c;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            }
+      .X {
+          transform: rotate(45deg);
+          }
 
-        .X, .Y {
-            position: absolute;
-            width: 16px;
-            height: 2px;
-            background: white;
-            }
+      .Y {
+          transform: rotate(-45deg);
+          }
 
-        .X {
-            transform: rotate(45deg);
-            }
+      .button2:hover {
+          background: #b71c1c;
+          transform: scale(1.1);
+          }
 
-        .Y {
-            transform: rotate(-45deg);
-            }
+      .button2:active {
+          transform: scale(0.9);
+          background: #880e4f;
+          }
+        
+           .title {
+  font-size: 1.2rem;
+}
 
-        .button:hover {
-            background: #b71c1c;
-            transform: scale(1.1);
-            }
-
-        .button:active {
-            transform: scale(0.9);
-            background: #880e4f;
-            }
-            
-        </style>
-      `;
-
-      const renderRendimiento = (modo, datos) => `
-        <div class="modo">${modo}</div>
-        <div class="stats">
-          <p><strong>Velocidad promedio:</strong> ${datos.velocidad_promedio_kmh} km/h</p>
-          <p><strong>Consumo (seco):</strong> ${datos.consumo_combustible.seco}</p>
-          <p><strong>Desgaste (seco):</strong> ${datos.desgaste_neumaticos.seco}</p>
-        </div>
-      `;
-  
-      const html = `
-        <div class="card">
-          <h2>${data.equipo}</h2>
-          <div class="subtitulo">${data.modelo} – ${data.motor}</div>
-          <img src="${data.imagen}" alt="Vehículo ${data.equipo}">
-          <div class="stats">
-            <p><strong>Velocidad máx:</strong> ${data.velocidad_maxima_kmh} km/h</p>
-            <p><strong>0-100 km/h:</strong> ${data.aceleracion_0_100} s</p>
-          </div>
-          <hr>
-          ${renderRendimiento("Conducción normal", data.rendimiento.conduccion_normal)}
-          ${renderRendimiento("Conducción agresiva", data.rendimiento.conduccion_agresiva)}
-          ${renderRendimiento("Ahorro de combustible", data.rendimiento.ahorro_combustible)}
-
-          <button class="button">
-            <span class="X"></span>
-            <span class="Y"></span>
-          </button>
-        </div>
-      `;
-  
-      this.shadowRoot.innerHTML = `${style}${html}`;
-      const close_button = this.shadowRoot.querySelector(".button");
-        close_button.addEventListener("click", () => {
-          this.dispatchEvent(new CustomEvent("vehiculo-eliminado", {
-            detail: this.dataset.id, 
-            bubbles: true,
-            composed: true,
-          }));
-        });
+.country {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+    
+ .input-box1{
+        display: flex;
+        justify-content: center;
+        align
+        width: 310px;
+        margin: 20px 0;
       }
-    }
+         .input-box2 {
+            position: relative;
+            width: 300px;
+            display: flex;
+            position: relative;
+            justify-content: center;
+}
+
+.input-box2 input {
+  width: 100%;
+  height: 40px;
+  padding: 10px 15px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.input-box2 input:focus {
+  border-color: #ff1f1f;
+  box-shadow: 0 0 10px #ff1f1f;
+}
+
+.input-box2 label {
+  position: absolute;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ccc;
+  pointer-events: none;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
+
+.input-box2 input:focus + label,
+.input-box2 input:not(:placeholder-shown) + label {
+  top: 0;
+  left: 12px;
+  font-size: 12px;
+  background: #b60000;
+  padding: 0 6px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+        .title {
+          font-size: 1.2rem;
+        }
+
+        .country {
+          font-size: 0.9rem;
+          color: #aaa;
+        }
+          @media screen and (max-width: 1500px) {
+        .container {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));font-family: "Bruno Ace SC";
+          }
+    `;
+    const container = document.createElement("div")
+    container.classList.add("container")
+
+    const agregarTarjeta = (vehiculo) => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+    
+      card.innerHTML = `
+        <h2>${vehiculo.equipo}</h2>
+        <div class="subtitulo">${vehiculo.modelo} – ${vehiculo.motor}</div>
+        <img src="${vehiculo.imagen}" alt="Vehículo ${vehiculo.equipo}">
+        <div class="stats">
+          <p><strong>Velocidad máx:</strong> ${vehiculo.velocidad_maxima_kmh} km/h</p>
+          <p><strong>0-100 km/h:</strong> ${vehiculo.aceleracion_0_100} s</p>
+        </div>
+        <hr>
+        <div>
+          <p class="modo">Conducción Normal</p>
+          <p>Vel. promedio: ${vehiculo.rendimiento.conduccion_normal.velocidad_promedio_kmh} km/h</p>
+          <p>Combustible (seco): ${vehiculo.rendimiento.conduccion_normal.consumo_combustible.seco} L/km</p>
+          <p>Neumáticos (extremo): ${vehiculo.rendimiento.conduccion_normal.desgaste_neumaticos.extremo} %</p>
+    
+          <p class="modo">Conducción Agresiva</p>
+          <p>Vel. promedio: ${vehiculo.rendimiento.conduccion_agresiva.velocidad_promedio_kmh} km/h</p>
+    
+          <p class="modo">Ahorro Combustible</p>
+          <p>Vel. promedio: ${vehiculo.rendimiento.ahorro_combustible.velocidad_promedio_kmh} km/h</p>
+        </div>
+    
+      `;
+      container.appendChild(card);
+    };
+    
+  vehiculos.forEach(agregarTarjeta);
+  shadow.appendChild(style);
+  const searchBox = document.createElement("div");
+  searchBox.classList.add("input-box1");
+  searchBox.innerHTML = `
+    <div class="input-box2">
+      <input id="searchInput" type="text" required placeholder=" ">
+      <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar circuito...</label>
+    </div>
+  `;
+  shadow.appendChild(searchBox);
+      shadow.appendChild(container);
+      const searchInput = shadow.getElementById("searchInput");
   
-
-  const vehiclesLinks = document.querySelectorAll('.vehicle-link');
-  const vehiclesSection = document.getElementById('vehicles-section');
-  const navLinks = document.querySelectorAll('nav a');
-
-    navLinks.forEach(link => {
+  searchInput.addEventListener("input", () => {
+    const value = searchInput.value.toLowerCase();
+  
+    // Limpiar contenedor antes de renderizar resultados filtrados
+    container.innerHTML = "";
+  
+    const resultados = vehiculos.filter(v =>
+      v.equipo.toLowerCase().includes(value) ||
+      v.modelo.toLowerCase().includes(value) ||
+      v.motor.toLowerCase().includes(value)
+    );
+    
+  
+    resultados.forEach(agregarTarjeta);
+  });
+  
+  const vehiclesLinksAdmin = document.querySelectorAll('.vehicle-link');
+  const vehiclesSectionAdmin = document.getElementById('vehicles-section');
+  const navLinksAdmin = document.querySelectorAll('nav a');
+  
+  navLinksAdmin.forEach(link => {
     link.addEventListener('click', (e) => {
     e.preventDefault();
-
-
-    if ([...vehiclesLinks].includes(link)) {
-        vehiclesSection.style.display = 'block';
+  
+  
+    if ([...vehiclesLinksAdmin].includes(link)) {
+      vehiclesSectionAdmin.style.display = 'block';
     } else {
-        vehiclesSection.style.display = 'none';
+      vehiclesSectionAdmin.style.display = 'none';
     }
-
-
+  
+  
     if (window.innerWidth <= 768) {
       toggleMenu();
     }
   });
-});
-  
+  });
+  }
+}
   customElements.define("vehiculo-card", VehiculoCard);
 
 //Vehiculos Admin
