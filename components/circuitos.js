@@ -20,6 +20,7 @@ class CircuitoCard extends HTMLElement {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border: 2px solid #ff3c3c;
       background: #1f1f1f;
       padding: 0.75rem 1rem;
       border-radius: 10px 10px 0 0;
@@ -89,8 +90,11 @@ class CircuitoCard extends HTMLElement {
         margin: 20px 0;
       }
          .input-box2 {
-  position: relative;
-  width: 300px;
+            position: relative;
+            width: 300px;
+            display: flex;
+            position: relative;
+            justify-content: center;
 }
 
 .input-box2 input {
@@ -146,7 +150,6 @@ class CircuitoCard extends HTMLElement {
           @media screen and (max-width: 1500px) {
         .container {
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));font-family: "Bruno Ace SC";
-          margin: 1rem 35px;
           }
     `;
 
@@ -268,6 +271,7 @@ class CircuitoCardAdmin extends HTMLElement{
 .card {
   background: #222;
   border-radius: 12px;
+    border: 2px solid #ff3c3c;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s;
@@ -475,7 +479,6 @@ class CircuitoCardAdmin extends HTMLElement{
         .container {
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           font-family: "Bruno Ace SC";
-          margin: 1rem 35px;
         }
       }
       #buttonAdd{
@@ -515,8 +518,11 @@ class CircuitoCardAdmin extends HTMLElement{
         margin: 20px 0;
       }
          .input-box2 {
-  position: relative;
-  width: 300px;
+            position: relative;
+            width: 300px;
+            display: flex;
+            position: relative;
+            justify-content: center;
 }
 
 .input-box2 input {

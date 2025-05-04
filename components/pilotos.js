@@ -20,15 +20,13 @@ class PilotoCard extends HTMLElement {
         .card {
         border-radius: 12px;
         overflow: hidden;
-
+        border: 2px solid #ff3c3c;
         background: #222;
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         transition: transform 0.3s;
         position:relative;
-
-
         min-height: 360px;
         display: flex;
         flex-direction: column;
@@ -125,9 +123,12 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
         width: 310px;
         margin: 20px 0;
       }
-         .input-box2 {
-  position: relative;
-  width: 300px;
+        .input-box2 {
+            position: relative;
+            width: 300px;
+            display: flex;
+            position: relative;
+            justify-content: center;
 }
 
 .input-box2 input {
@@ -289,15 +290,13 @@ class PilotoCardAdmin extends HTMLElement {
       .card {
         border-radius: 12px;
         overflow: hidden;
-
+        border: 2px solid #ff3c3c;
         background: #222;
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         transition: transform 0.3s;
         position:relative;
-
-
         min-height: 360px;
         display: flex;
         flex-direction: column;
@@ -554,8 +553,11 @@ background: linear-gradient(0deg, rgba(143, 0, 0, 1) 5%, rgba(163, 0, 0, 0.79) 3
         margin: 20px 0;
       }
          .input-box2 {
-  position: relative;
-  width: 300px;
+            position: relative;
+            width: 300px;
+            display: flex;
+            position: relative;
+            justify-content: center;
 }
 
 .input-box2 input {
