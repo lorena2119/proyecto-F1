@@ -514,11 +514,22 @@ class CircuitoCardAdmin extends HTMLElement{
           <span class="Y"></span>
         </button>
       `;
+      const deleteButton = card.querySelector(".button2");
+      deleteButton.addEventListener("click", () => {
+      const index = circuitos.findIndex(c =>
+        c.nombre === circuito.nombre
+      );
+
+      if (index !== -1) {
+        circuitos.splice(index, 1);
+        localStorage.setItem("circuitos", JSON.stringify(circuitos));
+        card.remove();
+      }
+});
       container.appendChild(card);
     };
 
     circuitos.forEach(agregarTarjeta);
-
 
     const buttonAdd = document.createElement('button')
     buttonAdd.setAttribute('data-modal-target', '#modal')
