@@ -401,7 +401,7 @@ class PilotoCardAdmin extends HTMLElement {
       position: fixed; 
       bottom: 5%;
       font-family: "Bruno Ace SC";
-      right: 10px;
+      right: 5%;
       background-color: rgb(225, 6, 0);
       z-index: 20000;
       height: 40px;
@@ -418,8 +418,8 @@ class PilotoCardAdmin extends HTMLElement {
             position: absolute;
             top: 5px;
             right: 5px;
-            width: 25px;
-            height: 25px;
+            width: 35px;
+            height: 35px;
             background: #d32f2f;
             border: 2px solid #b71c1c;
             border-radius: 5px;
@@ -430,20 +430,7 @@ class PilotoCardAdmin extends HTMLElement {
             justify-content: center;
             }
 
-        .X, .Y {
-            position: absolute;
-            width: 16px;
-            height: 2px;
-            background: white;
-            }
-
-        .X {
-            transform: rotate(45deg);
-            }
-
-        .Y {
-            transform: rotate(-45deg);
-            }
+       
 
         .button2:hover {
             background: #b71c1c;
@@ -486,6 +473,7 @@ class PilotoCardAdmin extends HTMLElement {
           </button>
         `;
         const deleteButton = card.querySelector('.button2');
+        deleteButton.innerHTML="<box-icon name='trash' type='solid' color='#ffffff'; width='40px' ></box-icon>"
         deleteButton.addEventListener('click', () => {
           card.remove();
           const index = pilotos.findIndex(p => p.id === piloto.id);
