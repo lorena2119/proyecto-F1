@@ -43,7 +43,7 @@ class EquiposCard extends HTMLElement {
       .track-img {
         width: 100%;
         height: 180px;
-        object-fit: cover;
+        object-fit: fill;
         border-bottom: 2px solid #ff1e00;
         background-color:white;
       }
@@ -146,6 +146,7 @@ class EquiposCard extends HTMLElement {
           <div class="country">${equipo.pais}</div>
         </div>
         <img class="track-img" src="${equipo.imagen}" alt="${equipo.nombre}">
+        <div class="section-title">Motor: <span class="chip">${equipo.motor}</div>
         <div class="record">
           <div class="section-title">Pilotos:</div>
           ${equipo.pilotos.map(h => `<span class="chip">${h}</span>`)}
@@ -159,31 +160,31 @@ class EquiposCard extends HTMLElement {
     shadow.appendChild(style);
     shadow.appendChild(container)
     // Crear barra de búsqueda
-// const searchBox = document.createElement("div");
-// searchBox.classList.add("input-box1");
-// searchBox.innerHTML = `
-//   <div class="input-box2">
-//     <input id="searchInput" type="text" required placeholder=" ">
-//     <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar circuito...</label>
-//   </div>
-// `;
-//     shadow.appendChild(searchBox);
-//     shadow.appendChild(container);
-//     const searchInput = shadow.getElementById("searchInput");
+const searchBox = document.createElement("div");
+searchBox.classList.add("input-box1");
+searchBox.innerHTML = `
+  <div class="input-box2">
+    <input id="searchInput" type="text" required placeholder=" ">
+    <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar equipo...</label>
+  </div>
+`;
+    shadow.appendChild(searchBox);
+    shadow.appendChild(container);
+    const searchInput = shadow.getElementById("searchInput");
 
-// searchInput.addEventListener("input", () => {
-//   const value = searchInput.value.toLowerCase();
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
 
-//   // Limpiar contenedor antes de renderizar resultados filtrados
-//   container.innerHTML = "";
+  // Limpiar contenedor antes de renderizar resultados filtrados
+  container.innerHTML = "";
 
-//   const filteredPilotos = circuitos.filter(p =>
-//     p.nombre.toLowerCase().includes(value) ||
-//     p.pais.toLowerCase().includes(value)
-//   );
+  const filteredPilotos = equipos.filter(p =>
+    p.nombre.toLowerCase().includes(value) ||
+    p.pais.toLowerCase().includes(value)
+  );
 
-//   filteredPilotos.forEach(agregarTarjeta);
-// });
+  filteredPilotos.forEach(agregarTarjeta);
+});
     
 const teamsLinks = document.querySelectorAll('.teams-links');
 const teamsSection = document.getElementById('teams-section');
