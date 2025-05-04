@@ -214,7 +214,6 @@ class CircuitoCardAdmin extends HTMLElement{
       gap: 2rem;
       padding: 2rem;
       background: #111;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
     .container .header {
@@ -334,7 +333,7 @@ class CircuitoCardAdmin extends HTMLElement{
       .input-box{
         position: relative;
         width: 310px;
-        margin: 20px 0;
+        margin: 10px 0;
         border-bottom: 2px solid #000000;
       }
       .input-box label{
@@ -351,7 +350,18 @@ class CircuitoCardAdmin extends HTMLElement{
       .input-box input:valid~label{
         top: -5px;
       }
-      .input-box input{
+        p{
+        position: relative;
+        left: 10px;
+        margin-bottom: 0;
+        transform: translateY(-50%);
+        font-size: 1rem;
+        color: #000000;
+        padding: 0px 10px;
+        pointer-events: none;
+        transition: .5s;
+        }
+      .input-box input, .record input{
         width: 100%;
         height: 40px;
         background: transparent;
@@ -438,9 +448,10 @@ class CircuitoCardAdmin extends HTMLElement{
         }
            @media screen and (max-width: 1500px) {
         .container {
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));font-family: "Bruno Ace SC";
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          font-family: "Bruno Ace SC";
           margin: 1rem 35px;
-          }
+        }
       }
       #buttonAdd{
         padding: 10px 10px;
@@ -459,7 +470,17 @@ class CircuitoCardAdmin extends HTMLElement{
         color: #ffffff;
         font-weight: 500;
       }
-  
+      .record{
+      display: flex;
+      width: 310px;
+      height: 65px;
+      gap: 2%;
+      padding: 0px 15px;
+      }
+      .record label{
+      font-size: .9rem;
+      color:rgba(0, 0, 0, 0.51)
+      }
     `;
 
     const container = document.createElement("div")
@@ -505,7 +526,7 @@ class CircuitoCardAdmin extends HTMLElement{
     overlay.id = "overlay"
     formAdd.classList.add("modal")
     formAdd.id = 'modal'
-    buttonAdd.textContent = 'Agregar Piloto'
+    buttonAdd.textContent = 'Agregar Circuito'
     formAdd.innerHTML = `
       <div class="modal-header">
         <h2>Nuevo Piloto</h2>
@@ -517,20 +538,54 @@ class CircuitoCardAdmin extends HTMLElement{
           <label>Nombre</label>
         </div>
         <div class="input-box">    
-          <input type="text" required id="team">
-          <label>Equipo</label>
+          <input type="text" required id="country">
+          <label>País</label>
         </div>
         <div class="input-box">    
-          <input type="text" required id="rol">
-          <label>Rol</label>
+          <input type="text" required id="lenght">
+          <label>Longitud (Km)</label>
         </div>
         <div class="input-box">    
-          <input type="text" required id="experience">
-          <label>Años Experiencia</label>
+          <input type="text" required id="laps">
+          <label>Vueltas</label>
         </div>
         <div class="input-box">    
-          <input type="text" required id="skills">
-          <label>Habilidades</label>
+          <input type="text" required id="description">
+          <label>Descripción</label>
+        </div>
+        <div class="input-box">    
+          <input type="text" required id="track">
+          <label>Condiciones de pista</label>
+        </div>
+        <div class="record-container"> 
+          <p>Récord vuelta</p>
+          <div class="record">
+            <div class="input-box">    
+              <input type="text" required id="time">
+              <label>Tiempo</label>
+            </div>
+            <div class="input-box">    
+              <input type="text" required id="pilot">
+              <label>Piloto</label>
+            </div>
+            <div class="input-box">    
+              <input type="text" required id="year">
+              <label>Año</label>
+            </div>
+          </div>
+        </div>
+        <div class="record-container"> 
+          <p>Ganadores</p>
+          <div class="record">
+            <div class="input-box">    
+              <input type="text" required id="season">
+              <label>Temporada</label>
+            </div>
+            <div class="input-box">    
+              <input type="text" required id="name-winner">
+              <label>Nombre Piloto</label>
+            </div>
+          </div>
         </div>
         <div class="input-box">    
           <input type="text" required id="image">
