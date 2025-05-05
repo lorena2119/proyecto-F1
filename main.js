@@ -3,6 +3,7 @@ import './components/equipos.js'
 import './components/pilotos.js'
 import './components/simulacion.js'
 import './components/vehiculos.js';
+import './components/simulacion.js'
 import { vehiculos as vehiculosData } from "./data/vehiculos.js";
 import {circuitos as circuitosData} from "./data/circuitos.js"
 

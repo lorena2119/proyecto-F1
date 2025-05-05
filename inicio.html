@@ -11,7 +11,6 @@
     <script type="module" src="./main.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <!-- <link rel="stylesheet" href="./simulation/dist/style.css"> Estilos del Pixi.js -->
-    <script type="module" crossorigin src="./simulation/dist/assets/index-DbYPqC29.js"></script>
   </head>
   <body>
     <div id="particles-js"></div>
@@ -44,18 +43,18 @@
         </div>
       </div>
     </nav>
-
+    
     <main>
       <section id="drivers-section" style="display: block;">
         <h1 class="titulo">F1 Drivers 2025</h1>
         <piloto-card></piloto-card>
       </section>
-
+      
       <section id="tracks-section" style="display: none;">
         <h1 class="titulo">F1 Tracks 2025</h1>
         <circuito-card></circuito-card>
       </section>
-
+      
       <section id="vehicles-section" style="display: none;">
         <h1 class="titulo">F1 Vehicles 2025</h1>
         <vehiculo-card></vehiculo-card>
@@ -64,11 +63,11 @@
         <h1 class="titulo">F1 Teams 2025</h1>
         <equipos-card></equipos-card>
       </section>
-      <section id="simulation-section" style="display: none;">
-        <h1 class="titulo">F1 Simulation 2025</h1>
-      </section>
-    </main>
 
+      <section id="simulation-section" style="display: none;"> <h1 class="titulo">F1 Simulation 2025</h1><simulation-animate></simulation-animate></section>
+          
+    </main>
+    
     <footer>
       <p>&copy; 2025 Simulación de Fórmula 1</p>
     </footer>
