@@ -643,11 +643,11 @@ class EquiposCardAdmin extends HTMLElement {
   };
   
       equipos.forEach(agregarTarjeta);
-      shadow.appendChild(style);
+
       const buttonAdd = document.createElement('button');
-    buttonAdd.setAttribute('data-modal-target', '#modal');
-    buttonAdd.id = 'buttonAdd';
-    buttonAdd.textContent = 'Agregar Equipo';
+      buttonAdd.setAttribute('data-modal-target', '#modal');
+      buttonAdd.id = 'buttonAdd';
+      buttonAdd.textContent = 'Agregar Equipo';
 
     const overlay = document.createElement('div');
     overlay.id = "overlay";
@@ -667,8 +667,9 @@ class EquiposCardAdmin extends HTMLElement {
         <div class="input-box"><input type="text" required id="pilots"><label>Pilotos (coma separadas)</label></div>
         <div class="input-box"><input type="text" required id="image"><label>Url Imagen</label></div>
         <button type="submit" class="button">Agregar</button>
-      </div>
-    `;
+        </div>
+        `;
+        shadow.appendChild(style);
 
     
 
@@ -748,7 +749,7 @@ if (form) {
     };
 
     equipos.push(newteam);
-    localStorage.setItem("equipo", JSON.stringify(equipos));
+    localStorage.setItem("equipos", JSON.stringify(equipos));
     agregarTarjeta(newteam); // Renderizar nuevo piloto
 
     // Cerrar modal
