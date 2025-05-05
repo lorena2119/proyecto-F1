@@ -4,7 +4,7 @@ export let equipos = [
         pais: "Austria",
         motor: "Honda RBPT",
         pilotos: [1, 2], // IDs de pilotos
-        imagen: "https://cdn-5.motorsport.com/images/mgl/Y99JQRbY/s8/red-bull-racing-logo-1.jpg"
+        imagen: "https://brandlogos.net/wp-content/uploads/2022/05/red_bull_racing-logo-brandlogos.net_-512x512.png"
     },
     {
         nombre: "Mercedes-AMG Petronas",
@@ -32,7 +32,7 @@ export let equipos = [
         pais: "Reino Unido",
         motor: "Mercedes",
         pilotos: [9, 10],
-        imagen: "https://cdn-5.motorsport.com/images/mgl/0rGRlkm2/s8/aston-martin-logo-2022-1.jpg"
+        imagen: "https://pngimg.com/uploads/aston_martin/aston_martin_PNG35.png"
     },
     {
         nombre: "Alpine",
@@ -46,7 +46,7 @@ export let equipos = [
         pais: "Suiza",
         motor: "Ferrari",
         pilotos: [13, 14],
-        imagen: "https://vtlogo.com/wp-content/uploads/2020/03/alfa-romeo-racing-vector-logo-small.png"
+        imagen: "https://upload.wikimedia.org/wikipedia/it/5/55/Logo_Alfa_Romeo_Racing.png"
     },
     {
         nombre: "Haas",
@@ -60,13 +60,13 @@ export let equipos = [
         pais: "Italia",
         motor: "Honda RBPT",
         pilotos: [17, 18],
-        imagen: "https://www.unavozcontodos.mx/wp-content/uploads/2022/02/Scuderia-AlphaTauri.png"
+        imagen: "https://upload.wikimedia.org/wikipedia/en/4/4a/AlphaTauri.svg"
     },
     {
         nombre: "Williams",
         pais: "Reino Unido",
         motor: "Mercedes",
         pilotos: [19, 20],
-        imagen: "https://cdn-1.motorsport.com/images/mgl/2y39NBy6/s8/williams-racing-logo-1.jpg"
+        imagen: "https://static.wikia.nocookie.net/logopedia/images/3/33/Williams_racing_logo_alt.png"
     }
 ];

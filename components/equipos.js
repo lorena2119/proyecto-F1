@@ -9,60 +9,94 @@ class EquiposCard extends HTMLElement {
     
     const style = document.createElement("style");
     style.textContent = `
-    .container {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-}
-
-    .container .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #1f1f1f;
-      padding: 0.75rem 1rem;
-      border-radius: 10px 10px 0 0;
-      font-weight: bold;
-      color: #fff;
-    }
+    
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+      }
 
       .card {
         background: #222;
-        border-radius: 12px;
+        border: 1px solid #ff3c3c;
+        border-radius: 16px;
         overflow: hidden;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        transition: transform 0.3s;
-        position:relative;
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeIn 0.4s ease-in-out;
       }
 
       .card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-6px);
+        box-shadow: 0 0 25px rgba(255, 60, 60, 0.4);
       }
 
-      .track-img {
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .card img {
         width: 100%;
         height: 180px;
-        object-fit: fill;
-        border-bottom: 2px solid #ff1e00;
-        background-color:white;
+        object-fit: contain;
+        display: block;
       }
-
-      .info, .record, .winners, .description {
+      .info-section {
         padding: 1rem;
-        color: #ddd;
-      }
-
-      .info {
+        color: #fff;
         display: flex;
-        justify-content: space-between;
-        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 0.6rem;
       }
 
-      .section-title {
-        color: #ff1e00;
+      .info-section .title {
+        font-size: 1.4rem;
+        color: #ff5c5c;
         font-weight: bold;
-        margin-bottom: 0.5rem;
+      }
+
+      .info-section .country {
+        font-size: 0.9rem;
+        color: #ffaaaa;
+      }
+
+      .info-section .motor {
+        background: rgba(255, 60, 60, 0.1);
+        padding: 6px 12px;
+        border-radius: 12px;
+        display: inline-block;
+        font-size: 0.9rem;
+        border: 1px solid #ff3c3c;
+        color: #ff3c3c;
+      }
+
+      .pilotos-title {
+        font-size: 0.85rem;
+        color: #ff5c5c;
+        margin-top: 0.6rem;
+      }
+
+      .pilotos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        background: rgba(255, 60, 60, 0.1);
+        color: #ff5c5c;
+        padding: 5px 10px;
+        border-radius: 16px;
+        font-size: 0.75rem;
+        border: 1px solid #ff5c5c;
       }
 
       .input-box1{
@@ -143,20 +177,19 @@ class EquiposCard extends HTMLElement {
       const card = document.createElement("div");
       card.classList.add("card");
       card.innerHTML = `
-        <div class="header">
+        <img src="${equipo.imagen}" alt="${equipo.nombre}">
+        <div class="info-section">
           <div class="title">${equipo.nombre}</div>
           <div class="country">${equipo.pais}</div>
-        </div>
-        <img class="track-img" src="${equipo.imagen}" alt="${equipo.nombre}">
-        <div class="section-title">Motor: <span class="chip">${equipo.motor}</div>
-        <div class="record">
-          <div class="section-title">Pilotos:</div>
-          ${equipo.pilotos.map(h => `<span class="chip">${h}</span>`)}
+          <div class="motor">Motor: ${equipo.motor}</div>
+          <div class="pilotos-title">Pilotos:</div>
+          <div class="pilotos">
+            ${equipo.pilotos.map(p => `<span class="chip">${p}</span>`).join('')}
+          </div>
         </div>
       `;
-      
       container.appendChild(card);
-};
+    };
 
     equipos.forEach(agregarTarjeta);
     shadow.appendChild(style);
@@ -223,133 +256,152 @@ class EquiposCardAdmin extends HTMLElement {
       
       const style = document.createElement("style");
       style.textContent = `
+
       .container {
         display: grid;
-        grid-template-columns: repeat(3, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
         padding: 2rem;
-  }
-  
-      .container .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #1f1f1f;
-        padding: 0.75rem 1rem;
-        border-radius: 10px 10px 0 0;
-        font-weight: bold;
-        color: #fff;
-      }
-  
-        .card {
-          background: #222;
-          border-radius: 12px;
-          overflow: hidden;
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-          transition: transform 0.3s;
-          position:relative;
-        }
-  
-        .card:hover {
-          transform: translateY(-5px);
-        }
-  
-        .track-img {
-          width: 100%;
-          height: 180px;
-          object-fit: fill;
-          border-bottom: 2px solid #ff1e00;
-          background-color:white;
-        }
-  
-        .info, .record, .winners, .description {
-          padding: 1rem;
-          color: #ddd;
-        }
-  
-        .info {
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.9rem;
-        }
-  
-        .section-title {
-          color: #ff1e00;
-          font-weight: bold;
-          margin-bottom: 0.5rem;
-        }
-  
-        .input-box1{
-          display: flex;
-          justify-content: center;
-          align
-          width: 310px;
-          margin: 20px 0;
-        }
-           .input-box2 {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 300px;
-  }
-  
-  .input-box2 input {
-    width: 100%;
-    height: 40px;
-    padding: 10px 15px;
-    background: transparent;
-    border: 2px solid #fff;
-    border-radius: 30px;
-    color: white;
-    font-size: 16px;
-    outline: none;
-    transition: 0.3s ease;
-  }
-  
-  .input-box2 input:focus {
-    border-color: #ff1f1f;
-    box-shadow: 0 0 10px #ff1f1f;
-  }
-  
-  .input-box2 label {
-    position: absolute;
-    left: 15px;
-    display: flex;
-    align-items: center;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #ccc;
-    pointer-events: none;
-    transition: 0.3s ease;
-    font-size: 14px;
-  }
-  
-  .input-box2 input:focus + label,
-  .input-box2 input:not(:placeholder-shown) + label {
-    top: 0;
-    left: 12px;
-    font-size: 12px;
-    background: #b60000;
-    padding: 0 6px;
-    border-radius: 12px;
-    color: #fff;
-  }
-  
-          .title {
-            font-size: 1.2rem;
-          }
-  
-          .country {
-            font-size: 0.9rem;
-            color: #aaa;
-          }
-          .input-box{
-        position: relative;
-        width: 310px;
-        margin: 20px 0;
-        border-bottom: 2px solid #000000;
       }
 
+      .card {
+        background: #222;
+        border: 1px solid #ff3c3c;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeIn 0.4s ease-in-out;
+        position:relative;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 0 25px rgba(255, 60, 60, 0.4);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+        display: block;
+      }
+      .info-section {
+        padding: 1rem;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .info-section .title {
+        font-size: 1.4rem;
+        color: #ff5c5c;
+        font-weight: bold;
+      }
+
+      .info-section .country {
+        font-size: 0.9rem;
+        color: #ffaaaa;
+      }
+
+      .info-section .motor {
+        background: rgba(255, 60, 60, 0.1);
+        padding: 6px 12px;
+        border-radius: 12px;
+        display: inline-block;
+        font-size: 0.9rem;
+        border: 1px solid #ff3c3c;
+        color: #ff3c3c;
+      }
+
+      .pilotos-title {
+        font-size: 0.85rem;
+        color: #ff5c5c;
+        margin-top: 0.6rem;
+      }
+
+      .pilotos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        background: rgba(255, 60, 60, 0.1);
+        color: #ff5c5c;
+        padding: 5px 10px;
+        border-radius: 16px;
+        font-size: 0.75rem;
+        border: 1px solid #ff5c5c;
+      }
+
+       .button2 {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          width: 35px;
+          height: 35px;
+          background: #d32f2f;
+          border: 2px solid #b71c1c;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: transform 0.2s, background 0.3s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          }
+
+      .X, .Y {
+          position: absolute;
+          width: 16px;
+          height: 2px;
+          background: white;
+          }
+
+      .X {
+          transform: rotate(45deg);
+          }
+
+      .Y {
+          transform: rotate(-45deg);
+          }
+
+      .button2:hover {
+          background: #b71c1c;
+          transform: scale(1.1);
+          }
+
+      .button2:active {
+          transform: scale(0.9);
+          background: #880e4f;
+          }
+        
+           .title {
+  font-size: 1.2rem;
+}
+
+.country {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+      .input-box{
+        position: relative;
+        width: 310px;
+        margin: 10px 0;
+        border-bottom: 2px solid #000000;
+      }
       .input-box label{
         position: absolute;
         top:50%;
@@ -364,7 +416,18 @@ class EquiposCardAdmin extends HTMLElement {
       .input-box input:valid~label{
         top: -5px;
       }
-      .input-box input{
+        p{
+        position: relative;
+        left: 10px;
+        margin-bottom: 0;
+        transform: translateY(-50%);
+        font-size: 1rem;
+        color: #000000;
+        padding: 0px 10px;
+        pointer-events: none;
+        transition: .5s;
+        }
+      .input-box input, .record input{
         width: 100%;
         height: 40px;
         background: transparent;
@@ -374,7 +437,7 @@ class EquiposCardAdmin extends HTMLElement {
         color: #000000;
         padding: 0 0px 0 5px;
       }
-      .button{
+        .button{
         width: 100%;
         height: 40px;
         background: rgb(225, 6, 0);
@@ -387,33 +450,6 @@ class EquiposCardAdmin extends HTMLElement {
         font-weight: 500;
         font-family: "Bruno Ace SC";
       }
-        .button2 {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            width: 35px;
-            height: 35px;
-            background: #d32f2f;
-            border: 2px solid #b71c1c;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            }
-
-       
-
-        .button2:hover {
-            background: #b71c1c;
-            transform: scale(1.1);
-            }
-
-        .button2:active {
-            transform: scale(0.9);
-            background: #880e4f;
-            }
       .modal{
         position: fixed;
         bottom: 50%;
@@ -476,22 +512,22 @@ class EquiposCardAdmin extends HTMLElement {
           pointer-events: all;
           opacity: 1;
         }
-            @media screen and (max-width: 1500px) {
+           @media screen and (max-width: 1500px) {
         .container {
-          grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           font-family: "Bruno Ace SC";
-          }
+        }
       }
       #buttonAdd{
-      padding: 10px 10px;
-      position: fixed; 
-      bottom: 5%;
-      font-family: "Bruno Ace SC";
-      right: 5%;
-      box-shadow: 0px 3px 20px rgba(255, 255, 255, 0.4);
-      background-color: rgb(0, 0, 0);
-      z-index: 20000;
-      height: 40px;
+        padding: 10px 10px;
+        position: fixed; 
+        bottom: 5%;
+        font-family: "Bruno Ace SC";
+        right: 10px;
+         box-shadow: 0px 3px 20px rgba(255, 255, 255, 0.4);
+        background-color: rgb(0, 0, 0);
+        z-index: 20000;
+        height: 40px;
         border: none;
         outline: none;
         border-radius: 40px;
@@ -500,53 +536,93 @@ class EquiposCardAdmin extends HTMLElement {
         color: #ffffff;
         font-weight: 500;
       }
-
-      .button2 {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 35px;
-            height: 35px;
-            background: #d32f2f;
-            border: 2px solid #b71c1c;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
+      .record{
+      display: flex;
+      width: 310px;
+      height: 65px;
+      gap: 2%;
+      padding: 0px 15px;
+      }
+      .record label{
+      font-size: .9rem;
+      color:rgba(0, 0, 0, 0.51)
+      }
+      .input-box1{
+        display: flex;
+        justify-content: center;
+        align
+        width: 310px;
+        margin: 20px 0;
+      }
+         .input-box2 {
+            position: relative;
+            width: 300px;
             display: flex;
-            align-items: center;
+            position: relative;
             justify-content: center;
-            }
+}
 
-       
+.input-box2 input {
+  width: 100%;
+  height: 40px;
+  padding: 10px 15px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+}
 
-        .button2:hover {
-            background: #b71c1c;
-            transform: scale(1.1);
-            }
+.input-box2 input:focus {
+  border-color: #ff1f1f;
+  box-shadow: 0 0 10px #ff1f1f;
+}
 
-        .button2:active {
-            transform: scale(0.9);
-            background: #880e4f;
-            }
+.input-box2 label {
+  position: absolute;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ccc;
+  pointer-events: none;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
+
+.input-box2 input:focus + label,
+.input-box2 input:not(:placeholder-shown) + label {
+  top: 0;
+  left: 12px;
+  font-size: 12px;
+  background: #b60000;
+  padding: 0 6px;
+  border-radius: 12px;
+  color: #fff;
+}
+  
       `;
   
       const container = document.createElement("div")
       container.classList.add("container")
   
       const agregarTarjeta = (equipo) => {
-        const card = document.createElement("div");
-        card.classList.add("card");
-        card.innerHTML = `
-          <div class="header">
-            <div class="title">${equipo.nombre}</div>
-            <div class="country">${equipo.pais}</div>
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.innerHTML = `
+        <img src="${equipo.imagen}" alt="${equipo.nombre}">
+        <div class="info-section">
+          <div class="title">${equipo.nombre}</div>
+          <div class="country">${equipo.pais}</div>
+          <div class="motor">Motor: ${equipo.motor}</div>
+          <div class="pilotos-title">Pilotos:</div>
+          <div class="pilotos">
+            ${equipo.pilotos.map(p => `<span class="chip">${p}</span>`).join('')}
           </div>
-          <img class="track-img" src="${equipo.imagen}" alt="${equipo.nombre}">
-          <div class="section-title">Motor: <span class="chip">${equipo.motor}</div>
-          <div class="record">
-            <div class="section-title">Pilotos:</div>
-            ${equipo.pilotos.map(h => `<span class="chip">${h}</span>`)}
-          </div>
+        </div>
           <button class="button2">
             <span class="X"></span>
             <span class="Y"></span>
