@@ -632,10 +632,10 @@ class EquiposCardAdmin extends HTMLElement {
         deleteButton.innerHTML="<box-icon name='trash' type='solid' color='#ffffff'; width='40px' ></box-icon>"
         deleteButton.addEventListener('click', () => {
           card.remove();
-          const index = equipos.findIndex(p => p.id === piloto.id);
+          const index = equipos.findIndex(p => p.nombre === equipo.nombre);
           if (index !== -1) {
-            pilotos.splice(index, 1);
-            localStorage.setItem("piloto", JSON.stringify(pilotos));
+            equipos.splice(index, 1);
+            localStorage.setItem("equipos", JSON.stringify(equipos));
           }
         });
         
