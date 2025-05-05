@@ -253,7 +253,7 @@ class VehiculoCard extends HTMLElement {
   searchBox.innerHTML = `
     <div class="input-box2">
       <input id="searchInput" type="text" required placeholder=" ">
-      <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar circuito...</label>
+      <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar vehículo...</label>
     </div>
   `;
   shadow.appendChild(searchBox);
