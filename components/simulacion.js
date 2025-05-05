@@ -9,14 +9,14 @@ class Simulation extends HTMLElement {
       style.textContent= `
       iframe{
         width: 100%;
-        height: 64.8vh;
+        height: 74.8vh;
         display:flex;
         }
         
       `
 
       container.innerHTML = `
-      <iframe src="simulation/dist/index.html" scrolling="no" style="display: block; border: none;">
+      <iframe src="simulation/dist/index.html" scrolling="auto" style="display: block; border: none;">
       `
 
       shadow.appendChild(style)
