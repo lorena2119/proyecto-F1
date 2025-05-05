@@ -424,7 +424,7 @@ class VehiculoCardAdmin extends HTMLElement {
 }
       .input-box{
         position: relative;
-        width: 310px;
+        width: 350px;
         margin: 10px 0;
         border-bottom: 2px solid #000000;
       }
@@ -444,12 +444,12 @@ class VehiculoCardAdmin extends HTMLElement {
       }
         p{
         position: relative;
-        left: 10px;
+        left: -5;
         margin-bottom: 0;
         transform: translateY(-50%);
         font-size: 1rem;
         color: #000000;
-        padding: 0px 10px;
+        padding: 0px 3px;
         pointer-events: none;
         transition: .5s;
         }
@@ -562,17 +562,6 @@ class VehiculoCardAdmin extends HTMLElement {
         color: #ffffff;
         font-weight: 500;
       }
-      .record{
-      display: flex;
-      width: 310px;
-      height: 65px;
-      gap: 2%;
-      padding: 0px 15px;
-      }
-      .record label{
-      font-size: .9rem;
-      color:rgba(0, 0, 0, 0.51)
-      }
       .input-box1{
         display: flex;
         justify-content: center;
@@ -628,6 +617,34 @@ class VehiculoCardAdmin extends HTMLElement {
   padding: 0 6px;
   border-radius: 12px;
   color: #fff;
+}
+  .record{
+      display: flex;
+      width: 360px;
+      height: 65px;
+      gap: 2%;
+      }
+      .record label{
+      font-size: .8rem;
+      color:rgba(0, 0, 0, 0.51);
+      position: absolute;
+        top:50%;
+        left: 5px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        transition: .5s;
+      }
+      @media(max-width: 428px){
+  .input-box{
+    width: 290px;
+    margin: 7px 10px;
+  }
+    .record{
+      width: 300px;
+      margin: 2px 0px;
+      display: flex;
+      gap: 1px
+      }
 }
     `
 
@@ -709,29 +726,60 @@ class VehiculoCardAdmin extends HTMLElement {
     <input id="motor" type="text" required>
     <label>Motor</label>
   </div>
-  <div class="input-box">
-    <input id="vel_max" type="number" required>
-    <label>Velocidad Máxima (km/h)</label>
-  </div>
-  <div class="input-box">
-    <input id="aceleracion" type="number" step="0.01" required>
-    <label>0-100 km/h (s)</label>
+
+  <div class="record-container"> 
+          <div class="record">
+            <div class="input-box">    
+              <input type="number" required id="vel_max">
+              <label>Velocidad Máxima (km/h)</label>
+            </div>
+            <div class="input-box">    
+              <input type="number" required id="aceleracion" step="0.01">
+              <label>Aceleración 0-100 km/h (s)</label>
+            </div>
+          </div>
   </div>
   <div class="input-box">
     <input id="pilotos" type="text" required>
-    <label>ID de pilotos (separados por coma)</label>
+    <label>ID pilotos (comas separadas)</label>
+  </div>
+  <div class="record-container"> 
+          <p>Conducción Normal</p>
+          <div class="record">
+            <div class="input-box">    
+              <input type="number" required id="vel_cn">
+              <label>Vel. promedio</label>
+            </div>
+            <div class="input-box">    
+              <input type="number" required id="comb_seco_cn">
+              <label>Combustible seco</label>
+            </div>
+            <div class="input-box">    
+              <input type="number" required id="desg_extremo_cn">
+              <label>Desgaste neumáticos extremo</label>
+            </div>
+          </div>
   </div>
 
-  <p class="modo">🚗 Conducción Normal</p>
-  <div class="input-box"><input id="vel_cn" type="number"><label>Vel. promedio</label></div>
-  <div class="input-box"><input id="comb_seco_cn" type="number"><label>Combustible seco</label></div>
-  <div class="input-box"><input id="desg_extremo_cn" type="number"><label>Desgaste neumáticos extremo</label></div>
+  <div class="record-container"> 
+          <p>Conducción Agresiva</p>
+          <div class="record">
+            <div class="input-box">    
+              <input type="number" required id="vel_ca">
+              <label>Vel. promedio</label>
+            </div>
 
-  <p class="modo">🏁 Conducción Agresiva</p>
-  <div class="input-box"><input id="vel_ca" type="number"><label>Vel. promedio</label></div>
-
-  <p class="modo">💡 Ahorro Combustible</p>
-  <div class="input-box"><input id="vel_ah" type="number"><label>Vel. promedio</label></div>
+          </div>
+  </div>
+  <div class="record-container"> 
+          <p>Ahorro Combustible</p>
+          <div class="record">
+            <div class="input-box">    
+              <input type="number" required id="vel_ah">
+              <label>Vel. promedio</label>
+            </div>
+          </div>
+  </div>
 
   <div class="input-box">
     <input id="imagen" type="text" required>
@@ -795,7 +843,7 @@ class VehiculoCardAdmin extends HTMLElement {
   searchBox.innerHTML = `
     <div class="input-box2">
       <input id="searchInput" type="text" required placeholder=" ">
-      <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar circuito...</label>
+      <label for="searchInput"><box-icon name='search' color='#ffffff' ></box-icon>Buscar vehículo...</label>
     </div>
   `;
   shadow.appendChild(searchBox);
