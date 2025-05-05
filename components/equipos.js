@@ -296,6 +296,7 @@ class EquiposCardAdmin extends HTMLElement {
         height: 180px;
         object-fit: contain;
         display: block;
+        background: linear-gradient(to bottom, #ffffff 10%, #222222 90%);
       }
       .info-section {
         padding: 1rem;
