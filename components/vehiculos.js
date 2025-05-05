@@ -28,7 +28,18 @@ class VehiculoCard extends HTMLElement {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
+  animation: fadeIn 0.4s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 
 .card:hover {
   transform: translateY(-6px);
@@ -319,7 +330,18 @@ class VehiculoCardAdmin extends HTMLElement {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
+  animation: fadeIn 0.4s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 
 .card:hover {
   transform: translateY(-6px);

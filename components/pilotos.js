@@ -32,6 +32,17 @@ class PilotoCard extends HTMLElement {
         flex-direction: column;
         justify-content: space-between;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeIn 0.4s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       .card:hover {
@@ -302,6 +313,17 @@ class PilotoCardAdmin extends HTMLElement {
         flex-direction: column;
         justify-content: space-between;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeIn 0.4s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       .card:hover {

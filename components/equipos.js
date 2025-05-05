@@ -48,6 +48,7 @@ class EquiposCard extends HTMLElement {
         height: 180px;
         object-fit: contain;
         display: block;
+        background: linear-gradient(to bottom, #ffffff 10%, #222222 90%);
       }
       .info-section {
         padding: 1rem;
@@ -59,13 +60,13 @@ class EquiposCard extends HTMLElement {
 
       .info-section .title {
         font-size: 1.4rem;
-        color: #ff5c5c;
+        color: #ff1e00;
         font-weight: bold;
       }
 
       .info-section .country {
         font-size: 0.9rem;
-        color: #ffaaaa;
+        color:rgb(145, 145, 145);
       }
 
       .info-section .motor {
@@ -75,12 +76,12 @@ class EquiposCard extends HTMLElement {
         display: inline-block;
         font-size: 0.9rem;
         border: 1px solid #ff3c3c;
-        color: #ff3c3c;
+        color: #ff1e00;
       }
 
       .pilotos-title {
         font-size: 0.85rem;
-        color: #ff5c5c;
+        color: #ff1e00;
         margin-top: 0.6rem;
       }
 

@@ -35,6 +35,17 @@ class CircuitoCard extends HTMLElement {
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         transition: transform 0.3s;
         position:relative;
+      animation: fadeIn 0.4s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       .card:hover {
@@ -276,7 +287,18 @@ class CircuitoCardAdmin extends HTMLElement{
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s;
   position:relative;
-}
+animation: fadeIn 0.4s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 
 .card:hover {
   transform: translateY(-5px);
