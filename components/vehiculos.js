@@ -455,7 +455,7 @@ class VehiculoCardAdmin extends HTMLElement {
         top:50%;
         left: 5px;
         transform: translateY(-50%);
-        font-size: 1rem;
+        font-size: .9rem;
         color: #000000;
         pointer-events: none;
         transition: .5s;
@@ -522,7 +522,7 @@ class VehiculoCardAdmin extends HTMLElement {
       }
       h2{
         font-weight: bold;
-        font-size: 2rem;
+        font-size: 1rem;
         color: #000000;
         margin: 0;
         text-align: center;
