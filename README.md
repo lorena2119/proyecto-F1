@@ -776,3 +776,10 @@
   2. Utilizar Conventional Commit
   3. Generar Readme con información detallada del proyecto.
   4. Proyecto 100% Responsive.
+
+   # **Credenciales de Acceso**
+
+  ```
+  admin: { user: 'admin', password: 'admin123' },
+  usuario: { user: 'user', password: 'user123' }
+  ```
